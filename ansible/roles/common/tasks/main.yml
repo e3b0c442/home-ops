@@ -1,0 +1,12 @@
+---
+- name: get the local username
+  become: false
+  local_action: command whoami
+  register: local_username
+  changed_when: False
+
+- name: add SSH key
+  authorized_key:
+    user: "{{ local_username.stdout }}"
+    key: "{{ lookup('file', 'ssh.pub') }}"
+    state: present

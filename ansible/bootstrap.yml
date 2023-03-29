@@ -1,0 +1,7 @@
+# add ansible user
+
+- hosts: all
+  become: yes
+  tasks:
+    - include_role:
+        name: ansible_node

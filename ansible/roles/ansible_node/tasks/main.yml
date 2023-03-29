@@ -1,0 +1,20 @@
+---
+- name: add ansible user
+  user:
+    name: ansible
+    shell: /bin/bash
+    state: present
+    groups: wheel
+    append: yes
+    uid: 9999
+- name: add ansible SSH key
+  authorized_key:
+    user: ansible
+    key: "{{ lookup('file', 'ansible.pub') }}"
+    state: present
+- name: setup nopasswd sudo for ansible user
+  lineinfile:
+    path: /etc/sudoers
+    line: 'ansible ALL=(ALL) NOPASSWD: ALL'
+    state: present
+    validate: 'visudo -cf %s'

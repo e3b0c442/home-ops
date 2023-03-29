@@ -1,0 +1,14 @@
+# Ansible playbook to install and configure a node
+- hosts: all
+  become: yes
+  tasks:
+    - include_role:
+        name: ansible_node
+    - include_role:
+        name: common
+
+- hosts: control_plane
+  become: yes
+  tasks:
+    - include_role:
+        name: k8s_control_plane
