@@ -10,3 +10,18 @@
     user: "{{ local_username.stdout }}"
     key: "{{ lookup('file', 'ssh.pub') }}"
     state: present
+
+- name: set hostname
+  hostname:
+    name: "{{ inventory_hostname }}"
+
+- name: update all packages
+  package:
+    name: '*'
+    state: latest
+
+- name: install and configure zsh
+  include_role:
+    name: zsh
+  vars:
+    username: "{{ local_username.stdout }}"

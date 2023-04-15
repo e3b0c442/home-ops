@@ -1,15 +1,2 @@
 ---
-- name: Create static pod manifests folder
-  file:
-    path: /etc/kubernetes/manifests
-    state: directory
-    mode: 0755
-    owner: root
-    group: root
-- name: Create kube-vip manifest
-  copy:
-    src: kube-vip.yaml
-    dest: /etc/kubernetes/manifests/kube-vip.yaml
-    mode: 0644
-    owner: root
-    group: root
+- import_tasks: prepare.yml

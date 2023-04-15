@@ -1,0 +1,30 @@
+---
+- name: install zsh
+  package:
+    name: zsh
+    state: present
+
+- name: install git
+  package:
+    name: git
+    state: present
+
+- name: install oh-my-zsh
+  become_user: "{{ username }}"
+  git:
+    repo: https://github.com/ohmyzsh/ohmyzsh
+    dest: /home/{{ username }}/.oh-my-zsh
+    
+- name: add .zshrc
+  become_user: "{{ username }}"
+  copy:
+    src: zshrc
+    dest: /home/{{ username }}/.zshrc
+    mode: 0644
+    owner: "{{ username }}"
+    group: "{{ username }}"
+
+- name: change user shell
+  user:
+    name: "{{ username }}"
+    shell: /usr/bin/zsh

@@ -1,0 +1,29 @@
+---
+- name: Add udev rule for network interface
+  template:
+    src: 70-persistent-net.rules.j2
+    dest: /etc/udev/rules.d/70-persistent-net.rules
+    mode: 0644
+    owner: root
+    group: root
+  register: udev_rule
+
+- name: Reboot if udev rule changed
+  reboot:
+  when: udev_rule.changed
+
+- name: Create static pod manifests folder
+  file:
+    path: /var/lib/rancher/k3s/server/manifests
+    state: directory
+    mode: 0755
+    owner: root
+    group: root
+
+- name: Create kube-vip manifest
+  copy:
+    src: kube-vip.yml
+    dest: /etc/kubernetes/manifests/kube-vip.yml
+    mode: 0644
+    owner: root
+    group: root

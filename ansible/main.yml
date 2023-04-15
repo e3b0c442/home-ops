@@ -2,13 +2,13 @@
 - hosts: all
   become: yes
   tasks:
-    - include_role:
+    - import_role:
         name: ansible_node
-    - include_role:
+    - import_role:
         name: common
 
 - hosts: control_plane
   become: yes
   tasks:
-    - include_role:
+    - import_role:
         name: k8s_control_plane
