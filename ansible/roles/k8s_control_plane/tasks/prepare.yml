@@ -23,7 +23,7 @@
 - name: Create kube-vip manifest
   copy:
     src: kube-vip.yml
-    dest: /etc/kubernetes/manifests/kube-vip.yml
+    dest: /var/lib/rancher/k3s/server/manifests/kube-vip.yml
     mode: 0644
     owner: root
     group: root

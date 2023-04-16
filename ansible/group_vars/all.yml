@@ -32,3 +32,5 @@ gpg_public_key: |
   qgx5PH7T8dT3ZgU=
   =pehC
   -----END PGP PUBLIC KEY BLOCK-----
+k8s_api_endpoint: "10.227.176.196"
+k8s_api_hostname: "kube-api"

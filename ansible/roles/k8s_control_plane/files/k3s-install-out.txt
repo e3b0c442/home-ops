@@ -1,0 +1,669 @@
++ GITHUB_URL=https://github.com/k3s-io/k3s/releases
++ STORAGE_URL=https://k3s-ci-builds.s3.amazonaws.com
++ DOWNLOADER=
+++ escape ''
+++ printf %s ''
+++ sed -e 's/\([][!#$%&()*;<=>?\_`{|}]\)/\\\1/g;'
+++ quote server --cluster-init --disable servicelb --tls-san kube-api --tls-san kube-api.lo.e3b0c442.dev --tls-san 10.227.176.196 --selinux
+++ for arg in "$@"
+++ printf '%s\n' server
+++ sed 's/'\''/'\''\\'\'''\''/g;1s/^/'\''/;$s/$/'\''/'
+++ for arg in "$@"
+++ printf '%s\n' --cluster-init
+++ sed 's/'\''/'\''\\'\'''\''/g;1s/^/'\''/;$s/$/'\''/'
+++ for arg in "$@"
+++ printf '%s\n' --disable
+++ sed 's/'\''/'\''\\'\'''\''/g;1s/^/'\''/;$s/$/'\''/'
+++ for arg in "$@"
+++ printf '%s\n' servicelb
+++ sed 's/'\''/'\''\\'\'''\''/g;1s/^/'\''/;$s/$/'\''/'
+++ for arg in "$@"
+++ printf '%s\n' --tls-san
+++ sed 's/'\''/'\''\\'\'''\''/g;1s/^/'\''/;$s/$/'\''/'
+++ for arg in "$@"
+++ printf '%s\n' kube-api
+++ sed 's/'\''/'\''\\'\'''\''/g;1s/^/'\''/;$s/$/'\''/'
+++ for arg in "$@"
+++ printf '%s\n' --tls-san
+++ sed 's/'\''/'\''\\'\'''\''/g;1s/^/'\''/;$s/$/'\''/'
+++ for arg in "$@"
+++ printf '%s\n' kube-api.lo.e3b0c442.dev
+++ sed 's/'\''/'\''\\'\'''\''/g;1s/^/'\''/;$s/$/'\''/'
+++ for arg in "$@"
+++ printf '%s\n' --tls-san
+++ sed 's/'\''/'\''\\'\'''\''/g;1s/^/'\''/;$s/$/'\''/'
+++ for arg in "$@"
+++ printf '%s\n' 10.227.176.196
+++ sed 's/'\''/'\''\\'\'''\''/g;1s/^/'\''/;$s/$/'\''/'
+++ for arg in "$@"
+++ printf '%s\n' --selinux
+++ sed 's/'\''/'\''\\'\'''\''/g;1s/^/'\''/;$s/$/'\''/'
++ eval set -- ''\''server'\''' ''\''--cluster-init'\''' ''\''--disable'\''' ''\''servicelb'\''' ''\''--tls-san'\''' ''\''kube-api'\''' ''\''--tls-san'\''' ''\''kube-api.lo.e3b0c442.dev'\''' ''\''--tls-san'\''' ''\''10.227.176.196'\''' ''\''--selinux'\'''
+++ set -- server --cluster-init --disable servicelb --tls-san kube-api --tls-san kube-api.lo.e3b0c442.dev --tls-san 10.227.176.196 --selinux
++ verify_system
++ '[' -x /sbin/openrc-run ']'
++ '[' -x /bin/systemctl ']'
++ HAS_SYSTEMD=true
++ return
++ setup_env server --cluster-init --disable servicelb --tls-san kube-api --tls-san kube-api.lo.e3b0c442.dev --tls-san 10.227.176.196 --selinux
++ case "$1" in
++ CMD_K3S=server
++ shift
++ verify_k3s_url
++ case "${K3S_URL}" in
+++ quote_indent --cluster-init --disable servicelb --tls-san kube-api --tls-san kube-api.lo.e3b0c442.dev --tls-san 10.227.176.196 --selinux
+++ printf ' \\\n'
+++ for arg in "$@"
++++ quote --cluster-init
++++ for arg in "$@"
++++ printf '%s\n' --cluster-init
++++ sed 's/'\''/'\''\\'\'''\''/g;1s/^/'\''/;$s/$/'\''/'
+++ printf '\t%s \\\n' ''\''--cluster-init'\'''
+++ for arg in "$@"
++++ quote --disable
++++ for arg in "$@"
++++ printf '%s\n' --disable
++++ sed 's/'\''/'\''\\'\'''\''/g;1s/^/'\''/;$s/$/'\''/'
+++ printf '\t%s \\\n' ''\''--disable'\'''
+++ for arg in "$@"
++++ quote servicelb
++++ for arg in "$@"
++++ printf '%s\n' servicelb
++++ sed 's/'\''/'\''\\'\'''\''/g;1s/^/'\''/;$s/$/'\''/'
+++ printf '\t%s \\\n' ''\''servicelb'\'''
+++ for arg in "$@"
++++ quote --tls-san
++++ for arg in "$@"
++++ printf '%s\n' --tls-san
++++ sed 's/'\''/'\''\\'\'''\''/g;1s/^/'\''/;$s/$/'\''/'
+++ printf '\t%s \\\n' ''\''--tls-san'\'''
+++ for arg in "$@"
++++ quote kube-api
++++ for arg in "$@"
++++ printf '%s\n' kube-api
++++ sed 's/'\''/'\''\\'\'''\''/g;1s/^/'\''/;$s/$/'\''/'
+++ printf '\t%s \\\n' ''\''kube-api'\'''
+++ for arg in "$@"
++++ quote --tls-san
++++ for arg in "$@"
++++ printf '%s\n' --tls-san
++++ sed 's/'\''/'\''\\'\'''\''/g;1s/^/'\''/;$s/$/'\''/'
+++ printf '\t%s \\\n' ''\''--tls-san'\'''
+++ for arg in "$@"
++++ quote kube-api.lo.e3b0c442.dev
++++ for arg in "$@"
++++ printf '%s\n' kube-api.lo.e3b0c442.dev
++++ sed 's/'\''/'\''\\'\'''\''/g;1s/^/'\''/;$s/$/'\''/'
+++ printf '\t%s \\\n' ''\''kube-api.lo.e3b0c442.dev'\'''
+++ for arg in "$@"
++++ quote --tls-san
++++ for arg in "$@"
++++ printf '%s\n' --tls-san
++++ sed 's/'\''/'\''\\'\'''\''/g;1s/^/'\''/;$s/$/'\''/'
+++ printf '\t%s \\\n' ''\''--tls-san'\'''
+++ for arg in "$@"
++++ quote 10.227.176.196
++++ for arg in "$@"
++++ printf '%s\n' 10.227.176.196
++++ sed 's/'\''/'\''\\'\'''\''/g;1s/^/'\''/;$s/$/'\''/'
+++ printf '\t%s \\\n' ''\''10.227.176.196'\'''
+++ for arg in "$@"
++++ quote --selinux
++++ for arg in "$@"
++++ printf '%s\n' --selinux
++++ sed 's/'\''/'\''\\'\'''\''/g;1s/^/'\''/;$s/$/'\''/'
+++ printf '\t%s \\\n' ''\''--selinux'\'''
++ CMD_K3S_EXEC='server \
+	'\''--cluster-init'\'' \
+	'\''--disable'\'' \
+	'\''servicelb'\'' \
+	'\''--tls-san'\'' \
+	'\''kube-api'\'' \
+	'\''--tls-san'\'' \
+	'\''kube-api.lo.e3b0c442.dev'\'' \
+	'\''--tls-san'\'' \
+	'\''10.227.176.196'\'' \
+	'\''--selinux'\'' \'
++ '[' -n '' ']'
++ '[' server = server ']'
++ SYSTEM_NAME=k3s
+++ printf %s k3s
+++ sed -e 's/[][!#$%&()*;<=>?\_`{|}/[:space:]]/^/g;'
++ valid_chars=k3s
++ '[' k3s '!=' k3s ']'
++ SUDO=sudo
+++ id -u
++ '[' 1000 -eq 0 ']'
++ '[' -n '' ']'
++ SYSTEMD_TYPE=notify
++ '[' -n '' ']'
++ BIN_DIR=/usr/local/bin
++ sudo sh -c 'touch /usr/local/bin/k3s-ro-test && rm -rf /usr/local/bin/k3s-ro-test'
++ '[' -n '' ']'
++ SYSTEMD_DIR=/etc/systemd/system
++ SERVICE_K3S=k3s.service
++ UNINSTALL_K3S_SH=/usr/local/bin/k3s-uninstall.sh
++ KILLALL_K3S_SH=/usr/local/bin/k3s-killall.sh
++ '[' true = true ']'
++ FILE_K3S_SERVICE=/etc/systemd/system/k3s.service
++ FILE_K3S_ENV=/etc/systemd/system/k3s.service.env
+++ get_installed_hashes
+++ sudo sha256sum /usr/local/bin/k3s /etc/systemd/system/k3s.service /etc/systemd/system/k3s.service.env
+++ true
++ PRE_INSTALL_HASHES='sha256sum: /usr/local/bin/k3s: No such file or directory
+sha256sum: /etc/systemd/system/k3s.service: No such file or directory
+sha256sum: /etc/systemd/system/k3s.service.env: No such file or directory'
++ '[' '' = true ']'
++ INSTALL_K3S_CHANNEL_URL=https://update.k3s.io/v1-release/channels
++ INSTALL_K3S_CHANNEL=stable
++ download_and_verify
++ can_skip_download_binary
++ '[' '' '!=' true ']'
++ '[' '' '!=' binary ']'
++ return 1
++ setup_verify_arch
++ '[' -z '' ']'
+++ uname -m
++ ARCH=x86_64
++ case $ARCH in
++ ARCH=amd64
++ SUFFIX=
++ verify_downloader curl
+++ command -v curl
++ '[' -x /usr/bin/curl ']'
++ DOWNLOADER=curl
++ return 0
++ setup_tmp
+++ mktemp -d -t k3s-install.XXXXXXXXXX
++ TMP_DIR=/tmp/k3s-install.W2G1Mo360y
++ TMP_HASH=/tmp/k3s-install.W2G1Mo360y/k3s.hash
++ TMP_BIN=/tmp/k3s-install.W2G1Mo360y/k3s.bin
++ trap cleanup INT EXIT
++ get_release_version
++ '[' -n '' ']'
++ '[' -n '' ']'
++ info 'Finding release for channel stable'
++ echo '[INFO] ' 'Finding release for channel stable'
+[INFO]  Finding release for channel stable
++ version_url=https://update.k3s.io/v1-release/channels/stable
++ case $DOWNLOADER in
+++ curl -w '%{url_effective}' -L -s -S https://update.k3s.io/v1-release/channels/stable -o /dev/null
+++ sed -e 's|.*/||'
++ VERSION_K3S=v1.26.3+k3s1
++ info 'Using v1.26.3+k3s1 as release'
++ echo '[INFO] ' 'Using v1.26.3+k3s1 as release'
+[INFO]  Using v1.26.3+k3s1 as release
++ download_hash
++ '[' -n '' ']'
++ HASH_URL=https://github.com/k3s-io/k3s/releases/download/v1.26.3+k3s1/sha256sum-amd64.txt
++ info 'Downloading hash https://github.com/k3s-io/k3s/releases/download/v1.26.3+k3s1/sha256sum-amd64.txt'
++ echo '[INFO] ' 'Downloading hash https://github.com/k3s-io/k3s/releases/download/v1.26.3+k3s1/sha256sum-amd64.txt'
+[INFO]  Downloading hash https://github.com/k3s-io/k3s/releases/download/v1.26.3+k3s1/sha256sum-amd64.txt
++ download /tmp/k3s-install.W2G1Mo360y/k3s.hash https://github.com/k3s-io/k3s/releases/download/v1.26.3+k3s1/sha256sum-amd64.txt
++ '[' 2 -eq 2 ']'
++ case $DOWNLOADER in
++ curl -o /tmp/k3s-install.W2G1Mo360y/k3s.hash -sfL https://github.com/k3s-io/k3s/releases/download/v1.26.3+k3s1/sha256sum-amd64.txt
++ '[' 0 -eq 0 ']'
+++ grep ' k3s$' /tmp/k3s-install.W2G1Mo360y/k3s.hash
++ HASH_EXPECTED='4c4288d0579d9c733e378e7bb352e38f707aa2e31724671e5062e2247b058f55  k3s'
++ HASH_EXPECTED=4c4288d0579d9c733e378e7bb352e38f707aa2e31724671e5062e2247b058f55
++ installed_hash_matches
++ '[' -x /usr/local/bin/k3s ']'
++ return 1
++ download_binary
++ '[' -n '' ']'
++ BIN_URL=https://github.com/k3s-io/k3s/releases/download/v1.26.3+k3s1/k3s
++ info 'Downloading binary https://github.com/k3s-io/k3s/releases/download/v1.26.3+k3s1/k3s'
++ echo '[INFO] ' 'Downloading binary https://github.com/k3s-io/k3s/releases/download/v1.26.3+k3s1/k3s'
+[INFO]  Downloading binary https://github.com/k3s-io/k3s/releases/download/v1.26.3+k3s1/k3s
++ download /tmp/k3s-install.W2G1Mo360y/k3s.bin https://github.com/k3s-io/k3s/releases/download/v1.26.3+k3s1/k3s
++ '[' 2 -eq 2 ']'
++ case $DOWNLOADER in
++ curl -o /tmp/k3s-install.W2G1Mo360y/k3s.bin -sfL https://github.com/k3s-io/k3s/releases/download/v1.26.3+k3s1/k3s
++ '[' 0 -eq 0 ']'
++ verify_binary
++ info 'Verifying binary download'
++ echo '[INFO] ' 'Verifying binary download'
+[INFO]  Verifying binary download
+++ sha256sum /tmp/k3s-install.W2G1Mo360y/k3s.bin
++ HASH_BIN='4c4288d0579d9c733e378e7bb352e38f707aa2e31724671e5062e2247b058f55  /tmp/k3s-install.W2G1Mo360y/k3s.bin'
++ HASH_BIN=4c4288d0579d9c733e378e7bb352e38f707aa2e31724671e5062e2247b058f55
++ '[' 4c4288d0579d9c733e378e7bb352e38f707aa2e31724671e5062e2247b058f55 '!=' 4c4288d0579d9c733e378e7bb352e38f707aa2e31724671e5062e2247b058f55 ']'
++ setup_binary
++ chmod 755 /tmp/k3s-install.W2G1Mo360y/k3s.bin
++ info 'Installing k3s to /usr/local/bin/k3s'
++ echo '[INFO] ' 'Installing k3s to /usr/local/bin/k3s'
+[INFO]  Installing k3s to /usr/local/bin/k3s
++ sudo chown root:root /tmp/k3s-install.W2G1Mo360y/k3s.bin
++ sudo mv -f /tmp/k3s-install.W2G1Mo360y/k3s.bin /usr/local/bin/k3s
++ setup_selinux
++ case ${INSTALL_K3S_CHANNEL} in
++ rpm_channel=stable
++ rpm_site=rpm.rancher.io
++ '[' stable = testing ']'
++ '[' -r /etc/os-release ']'
++ . /etc/os-release
+++ NAME=AlmaLinux
+++ VERSION='8.7 (Stone Smilodon)'
+++ ID=almalinux
+++ ID_LIKE='rhel centos fedora'
+++ VERSION_ID=8.7
+++ PLATFORM_ID=platform:el8
+++ PRETTY_NAME='AlmaLinux 8.7 (Stone Smilodon)'
+++ ANSI_COLOR='0;34'
+++ LOGO=fedora-logo-icon
+++ CPE_NAME=cpe:/o:almalinux:almalinux:8::baseos
+++ HOME_URL=https://almalinux.org/
+++ DOCUMENTATION_URL=https://wiki.almalinux.org/
+++ BUG_REPORT_URL=https://bugs.almalinux.org/
+++ ALMALINUX_MANTISBT_PROJECT=AlmaLinux-8
+++ ALMALINUX_MANTISBT_PROJECT_VERSION=8.7
+++ REDHAT_SUPPORT_PRODUCT=AlmaLinux
+++ REDHAT_SUPPORT_PRODUCT_VERSION=8.7
+++ expr 'rhel centos fedora' : '.*suse.*'
++ '[' 0 '!=' 0 ']'
++ '[' 8 = 7 ']'
++ '[' 'rhel centos fedora' = coreos ']'
++ '[' '' = coreos ']'
++ rpm_target=el8
++ rpm_site_infix=centos/8
++ package_installer=yum
++ '[' yum = rpm-ostree ']'
++ '[' yum = yum ']'
++ '[' -x /usr/bin/dnf ']'
++ package_installer=dnf
++ policy_hint='please install:
+    dnf install -y container-selinux
+    dnf install -y https://rpm.rancher.io/k3s/stable/common/centos/8/noarch/
+'
++ '[' '' = true ']'
++ can_skip_download_selinux
++ '[' '' '!=' true ']'
++ '[' '' '!=' selinux ']'
++ return 1
++ '[' '!' -d /usr/share/selinux ']'
++ get_k3s_selinux_version
++ available_version=k3s-selinux-1.2-2.el8.noarch.rpm
++ info 'Finding available k3s-selinux versions'
++ echo '[INFO] ' 'Finding available k3s-selinux versions'
+[INFO]  Finding available k3s-selinux versions
++ verify_downloader curl
+++ command -v curl
++ '[' -x /usr/bin/curl ']'
++ DOWNLOADER=curl
++ return 0
++ case $DOWNLOADER in
++ DOWNLOADER_OPTS=-s
++ for i in {1..3}
++ set +e
++ '[' stable = testing ']'
+++ timeout 5 curl -s https://api.github.com/repos/k3s-io/k3s-selinux/releases/latest
+++ grep browser_download_url
+++ awk '{ print $2 }'
+++ grep -oE '[^\/]+el8\.noarch\.rpm'
++ version=k3s-selinux-1.2-2.el8.noarch.rpm
++ set -e
++ '[' k3s-selinux-1.2-2.el8.noarch.rpm '!=' '' ']'
++ break
++ '[' k3s-selinux-1.2-2.el8.noarch.rpm == '' ']'
++ available_version=k3s-selinux-1.2-2.el8.noarch.rpm
++ install_selinux_rpm rpm.rancher.io stable el8 centos/8
++ '[' -r /etc/redhat-release ']'
++ repodir=/etc/yum.repos.d
++ '[' -d /etc/zypp/repos.d ']'
++ set +o noglob
++ sudo rm -f '/etc/yum.repos.d/rancher-k3s-common*.repo'
++ set -o noglob
++ '[' -r /etc/redhat-release ']'
++ '[' el8 = el7 ']'
++ sudo tee /etc/yum.repos.d/rancher-k3s-common.repo
++ case ${3} in
++ rpm_installer=yum
++ '[' yum = yum ']'
++ '[' -x /usr/bin/dnf ']'
++ rpm_installer=dnf
++ sudo dnf install -y k3s-selinux
+Rancher K3s Common (stable)                                                                                                                 3.9 kB/s | 2.0 kB     00:00    
+Dependencies resolved.
+============================================================================================================================================================================
+ Package                                     Architecture          Version                                                   Repository                                Size
+============================================================================================================================================================================
+Installing:
+ k3s-selinux                                 noarch                1.2-2.el8                                                 rancher-k3s-common-stable                 20 k
+Installing dependencies:
+ checkpolicy                                 x86_64                2.9-1.el8                                                 baseos                                   347 k
+ container-selinux                           noarch                2:2.189.0-1.module_el8.7.0+3407+95aa0ca9                  appstream                                 59 k
+ policycoreutils-python-utils                noarch                2.9-20.el8                                                baseos                                   252 k
+ python3-audit                               x86_64                3.0.7-4.el8                                               baseos                                    86 k
+ python3-libsemanage                         x86_64                2.9-9.el8_6                                               baseos                                   127 k
+ python3-policycoreutils                     noarch                2.9-20.el8                                                baseos                                   2.2 M
+ python3-setools                             x86_64                4.3.0-3.el8                                               baseos                                   623 k
+Enabling module streams:
+ container-tools                                                   rhel8                                                                                                   
+
+Transaction Summary
+============================================================================================================================================================================
+Install  8 Packages
+
+Total download size: 3.7 M
+Installed size: 10 M
+Downloading Packages:
+(1/8): python3-audit-3.0.7-4.el8.x86_64.rpm                                                                                                 576 kB/s |  86 kB     00:00    
+(2/8): policycoreutils-python-utils-2.9-20.el8.noarch.rpm                                                                                   985 kB/s | 252 kB     00:00    
+(3/8): python3-libsemanage-2.9-9.el8_6.x86_64.rpm                                                                                           1.1 MB/s | 127 kB     00:00    
+(4/8): checkpolicy-2.9-1.el8.x86_64.rpm                                                                                                     1.2 MB/s | 347 kB     00:00    
+(5/8): container-selinux-2.189.0-1.module_el8.7.0+3407+95aa0ca9.noarch.rpm                                                                  1.4 MB/s |  59 kB     00:00    
+(6/8): python3-setools-4.3.0-3.el8.x86_64.rpm                                                                                               1.8 MB/s | 623 kB     00:00    
+(7/8): k3s-selinux-1.2-2.el8.noarch.rpm                                                                                                      62 kB/s |  20 kB     00:00    
+(8/8): python3-policycoreutils-2.9-20.el8.noarch.rpm                                                                                        2.9 MB/s | 2.2 MB     00:00    
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                                       2.2 MB/s | 3.7 MB     00:01     
+Rancher K3s Common (stable)                                                                                                                 9.2 kB/s | 2.4 kB     00:00    
+Importing GPG key 0xE257814A:
+ Userid     : "Rancher (CI) <ci@rancher.com>"
+ Fingerprint: C8CF F216 4551 26E9 B9C9 18BE 925E A29A E257 814A
+ From       : https://rpm.rancher.io/public.key
+Key imported successfully
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                                                                    1/1 
+  Installing       : python3-setools-4.3.0-3.el8.x86_64                                                                                                                 1/8 
+  Installing       : python3-libsemanage-2.9-9.el8_6.x86_64                                                                                                             2/8 
+  Installing       : python3-audit-3.0.7-4.el8.x86_64                                                                                                                   3/8 
+  Installing       : checkpolicy-2.9-1.el8.x86_64                                                                                                                       4/8 
+  Installing       : python3-policycoreutils-2.9-20.el8.noarch                                                                                                          5/8 
+  Installing       : policycoreutils-python-utils-2.9-20.el8.noarch                                                                                                     6/8 
+  Running scriptlet: container-selinux-2:2.189.0-1.module_el8.7.0+3407+95aa0ca9.noarch                                                                                  7/8 
+  Installing       : container-selinux-2:2.189.0-1.module_el8.7.0+3407+95aa0ca9.noarch                                                                                  7/8 
+  Running scriptlet: container-selinux-2:2.189.0-1.module_el8.7.0+3407+95aa0ca9.noarch                                                                                  7/8 
+  Running scriptlet: k3s-selinux-1.2-2.el8.noarch                                                                                                                       8/8 
+  Installing       : k3s-selinux-1.2-2.el8.noarch                                                                                                                       8/8 
+  Running scriptlet: k3s-selinux-1.2-2.el8.noarch                                                                                                                       8/8 
+  Running scriptlet: container-selinux-2:2.189.0-1.module_el8.7.0+3407+95aa0ca9.noarch                                                                                  8/8 
+  Running scriptlet: k3s-selinux-1.2-2.el8.noarch                                                                                                                       8/8 
+  Verifying        : checkpolicy-2.9-1.el8.x86_64                                                                                                                       1/8 
+  Verifying        : policycoreutils-python-utils-2.9-20.el8.noarch                                                                                                     2/8 
+  Verifying        : python3-audit-3.0.7-4.el8.x86_64                                                                                                                   3/8 
+  Verifying        : python3-libsemanage-2.9-9.el8_6.x86_64                                                                                                             4/8 
+  Verifying        : python3-policycoreutils-2.9-20.el8.noarch                                                                                                          5/8 
+  Verifying        : python3-setools-4.3.0-3.el8.x86_64                                                                                                                 6/8 
+  Verifying        : container-selinux-2:2.189.0-1.module_el8.7.0+3407+95aa0ca9.noarch                                                                                  7/8 
+  Verifying        : k3s-selinux-1.2-2.el8.noarch                                                                                                                       8/8 
+
+Installed:
+  checkpolicy-2.9-1.el8.x86_64                         container-selinux-2:2.189.0-1.module_el8.7.0+3407+95aa0ca9.noarch       k3s-selinux-1.2-2.el8.noarch                
+  policycoreutils-python-utils-2.9-20.el8.noarch       python3-audit-3.0.7-4.el8.x86_64                                        python3-libsemanage-2.9-9.el8_6.x86_64      
+  python3-policycoreutils-2.9-20.el8.noarch            python3-setools-4.3.0-3.el8.x86_64                                     
+
+Complete!
++ return
++ policy_error=fatal
++ '[' '' = true ']'
++ '[' 'rhel centos fedora' = coreos ']'
++ '[' '' = coreos ']'
++ sudo chcon -u system_u -r object_r -t container_runtime_exec_t /usr/local/bin/k3s
++ '[' '!' -f /usr/share/selinux/packages/k3s.pp ']'
++ create_symlinks
++ '[' '' = true ']'
++ '[' '' = skip ']'
++ for cmd in kubectl crictl ctr
++ '[' '!' -e /usr/local/bin/kubectl ']'
+++ command -v kubectl
+++ true
++ which_cmd=
++ '[' -z '' ']'
++ info 'Creating /usr/local/bin/kubectl symlink to k3s'
++ echo '[INFO] ' 'Creating /usr/local/bin/kubectl symlink to k3s'
+[INFO]  Creating /usr/local/bin/kubectl symlink to k3s
++ sudo ln -sf k3s /usr/local/bin/kubectl
++ for cmd in kubectl crictl ctr
++ '[' '!' -e /usr/local/bin/crictl ']'
+++ command -v crictl
+++ true
++ which_cmd=
++ '[' -z '' ']'
++ info 'Creating /usr/local/bin/crictl symlink to k3s'
++ echo '[INFO] ' 'Creating /usr/local/bin/crictl symlink to k3s'
+[INFO]  Creating /usr/local/bin/crictl symlink to k3s
++ sudo ln -sf k3s /usr/local/bin/crictl
++ for cmd in kubectl crictl ctr
++ '[' '!' -e /usr/local/bin/ctr ']'
+++ command -v ctr
+++ true
++ which_cmd=
++ '[' -z '' ']'
++ info 'Creating /usr/local/bin/ctr symlink to k3s'
++ echo '[INFO] ' 'Creating /usr/local/bin/ctr symlink to k3s'
+[INFO]  Creating /usr/local/bin/ctr symlink to k3s
++ sudo ln -sf k3s /usr/local/bin/ctr
++ create_killall
++ '[' '' = true ']'
++ info 'Creating killall script /usr/local/bin/k3s-killall.sh'
++ echo '[INFO] ' 'Creating killall script /usr/local/bin/k3s-killall.sh'
+[INFO]  Creating killall script /usr/local/bin/k3s-killall.sh
++ sudo tee /usr/local/bin/k3s-killall.sh
++ sudo chmod 755 /usr/local/bin/k3s-killall.sh
++ sudo chown root:root /usr/local/bin/k3s-killall.sh
++ create_uninstall
++ '[' '' = true ']'
++ info 'Creating uninstall script /usr/local/bin/k3s-uninstall.sh'
++ echo '[INFO] ' 'Creating uninstall script /usr/local/bin/k3s-uninstall.sh'
+[INFO]  Creating uninstall script /usr/local/bin/k3s-uninstall.sh
++ sudo tee /usr/local/bin/k3s-uninstall.sh
++ sudo chmod 755 /usr/local/bin/k3s-uninstall.sh
++ sudo chown root:root /usr/local/bin/k3s-uninstall.sh
++ systemd_disable
++ sudo systemctl disable k3s
++ true
++ sudo rm -f /etc/systemd/system/k3s.service
++ sudo rm -f /etc/systemd/system/k3s.service.env
++ create_env_file
++ info 'env: Creating environment file /etc/systemd/system/k3s.service.env'
++ echo '[INFO] ' 'env: Creating environment file /etc/systemd/system/k3s.service.env'
+[INFO]  env: Creating environment file /etc/systemd/system/k3s.service.env
++ sudo touch /etc/systemd/system/k3s.service.env
++ sudo chmod 0600 /etc/systemd/system/k3s.service.env
++ sh -c export
++ read x v
++ grep -E '^(K3S|CONTAINERD)_'
++ sudo tee /etc/systemd/system/k3s.service.env
++ echo 'DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"'
++ read x v
++ echo 'HISTCONTROL="ignoredups"'
++ read x v
++ echo 'HISTSIZE="50000"'
++ read x v
++ echo 'HOME="/home/nick"'
++ read x v
++ echo 'HOSTNAME="beta-3"'
++ read x v
++ echo 'LANG="en_US.UTF-8"'
++ read x v
++ echo 'LESS="-R"'
++ read x v
++ echo 'LESSOPEN="||/usr/bin/lesspipe.sh' '%s"'
++ read x v
++ echo 'LOGNAME="nick"'
++ read x v
++ echo 'LSCOLORS="Gxfxcxdxbxegedabagacad"'
++ read x v
++ echo 'LS_COLORS="rs=0:di=38;5;33:ln=38;5;51:mh=00:pi=40;38;5;11:so=38;5;13:do=38;5;5:bd=48;5;232;38;5;11:cd=48;5;232;38;5;3:or=48;5;232;38;5;9:mi=01;05;37;41:su=48;5;196;38;5;15:sg=48;5;11;38;5;16:ca=48;5;196;38;5;226:tw=48;5;10;38;5;16:ow=48;5;10;38;5;21:st=48;5;21;38;5;15:ex=38;5;40:*.tar=38;5;9:*.tgz=38;5;9:*.arc=38;5;9:*.arj=38;5;9:*.taz=38;5;9:*.lha=38;5;9:*.lz4=38;5;9:*.lzh=38;5;9:*.lzma=38;5;9:*.tlz=38;5;9:*.txz=38;5;9:*.tzo=38;5;9:*.t7z=38;5;9:*.zip=38;5;9:*.z=38;5;9:*.dz=38;5;9:*.gz=38;5;9:*.lrz=38;5;9:*.lz=38;5;9:*.lzo=38;5;9:*.xz=38;5;9:*.zst=38;5;9:*.tzst=38;5;9:*.bz2=38;5;9:*.bz=38;5;9:*.tbz=38;5;9:*.tbz2=38;5;9:*.tz=38;5;9:*.deb=38;5;9:*.rpm=38;5;9:*.jar=38;5;9:*.war=38;5;9:*.ear=38;5;9:*.sar=38;5;9:*.rar=38;5;9:*.alz=38;5;9:*.ace=38;5;9:*.zoo=38;5;9:*.cpio=38;5;9:*.7z=38;5;9:*.rz=38;5;9:*.cab=38;5;9:*.wim=38;5;9:*.swm=38;5;9:*.dwm=38;5;9:*.esd=38;5;9:*.jpg=38;5;13:*.jpeg=38;5;13:*.mjpg=38;5;13:*.mjpeg=38;5;13:*.gif=38;5;13:*.bmp=38;5;13:*.pbm=38;5;13:*.pgm=38;5;13:*.ppm=38;5;13:*.tga=38;5;13:*.xbm=38;5;13:*.xpm=38;5;13:*.tif=38;5;13:*.tiff=38;5;13:*.png=38;5;13:*.svg=38;5;13:*.svgz=38;5;13:*.mng=38;5;13:*.pcx=38;5;13:*.mov=38;5;13:*.mpg=38;5;13:*.mpeg=38;5;13:*.m2v=38;5;13:*.mkv=38;5;13:*.webm=38;5;13:*.ogm=38;5;13:*.mp4=38;5;13:*.m4v=38;5;13:*.mp4v=38;5;13:*.vob=38;5;13:*.qt=38;5;13:*.nuv=38;5;13:*.wmv=38;5;13:*.asf=38;5;13:*.rm=38;5;13:*.rmvb=38;5;13:*.flc=38;5;13:*.avi=38;5;13:*.fli=38;5;13:*.flv=38;5;13:*.gl=38;5;13:*.dl=38;5;13:*.xcf=38;5;13:*.xwd=38;5;13:*.yuv=38;5;13:*.cgm=38;5;13:*.emf=38;5;13:*.ogv=38;5;13:*.ogx=38;5;13:*.aac=38;5;45:*.au=38;5;45:*.flac=38;5;45:*.m4a=38;5;45:*.mid=38;5;45:*.midi=38;5;45:*.mka=38;5;45:*.mp3=38;5;45:*.mpc=38;5;45:*.ogg=38;5;45:*.ra=38;5;45:*.wav=38;5;45:*.oga=38;5;45:*.opus=38;5;45:*.spx=38;5;45:*.xspf=38;5;45:"'
++ read x v
++ echo 'MAIL="/var/spool/mail/nick"'
++ read x v
++ echo 'OLDPWD="/home/nick"'
++ read x v
++ echo 'PAGER="less"'
++ read x v
++ echo 'PATH="/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/nick/bin"'
++ read x v
++ echo 'PWD="/home/nick"'
++ read x v
++ echo 'SELINUX_LEVEL_REQUESTED=""'
++ read x v
++ echo 'SELINUX_ROLE_REQUESTED=""'
++ read x v
++ echo 'SELINUX_USE_CURRENT_RANGE=""'
++ read x v
++ echo 'SHELL="/usr/bin/zsh"'
++ read x v
++ echo 'SHLVL="3"'
++ read x v
++ echo 'SSH_AUTH_SOCK="/tmp/ssh-C92z8uyKwy/agent.5656"'
++ read x v
++ echo 'SSH_CLIENT="10.1.0.13' 58499 '22"'
++ read x v
++ echo 'SSH_CONNECTION="10.1.0.13' 58499 10.227.176.23 '22"'
++ read x v
++ echo 'SSH_TTY="/dev/pts/0"'
++ read x v
++ echo 'TERM="xterm-256color"'
++ read x v
++ echo 'USER="nick"'
++ read x v
++ echo 'XDG_RUNTIME_DIR="/run/user/1000"'
++ read x v
++ echo 'XDG_SESSION_ID="4"'
++ read x v
++ echo 'ZSH="/home/nick/.oh-my-zsh"'
++ read x v
++ echo '_="/usr/bin/sh"'
++ read x v
++ echo 'which_declare="typeset' '-f"'
++ read x v
++ sh -c export
++ read x v
++ sudo tee -a /etc/systemd/system/k3s.service.env
++ grep -Ei '^(NO|HTTP|HTTPS)_PROXY'
++ echo 'DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"'
++ read x v
++ echo 'HISTCONTROL="ignoredups"'
++ read x v
++ echo 'HISTSIZE="50000"'
++ read x v
++ echo 'HOME="/home/nick"'
++ read x v
++ echo 'HOSTNAME="beta-3"'
++ read x v
++ echo 'LANG="en_US.UTF-8"'
++ read x v
++ echo 'LESS="-R"'
++ read x v
++ echo 'LESSOPEN="||/usr/bin/lesspipe.sh' '%s"'
++ read x v
++ echo 'LOGNAME="nick"'
++ read x v
++ echo 'LSCOLORS="Gxfxcxdxbxegedabagacad"'
++ read x v
++ echo 'LS_COLORS="rs=0:di=38;5;33:ln=38;5;51:mh=00:pi=40;38;5;11:so=38;5;13:do=38;5;5:bd=48;5;232;38;5;11:cd=48;5;232;38;5;3:or=48;5;232;38;5;9:mi=01;05;37;41:su=48;5;196;38;5;15:sg=48;5;11;38;5;16:ca=48;5;196;38;5;226:tw=48;5;10;38;5;16:ow=48;5;10;38;5;21:st=48;5;21;38;5;15:ex=38;5;40:*.tar=38;5;9:*.tgz=38;5;9:*.arc=38;5;9:*.arj=38;5;9:*.taz=38;5;9:*.lha=38;5;9:*.lz4=38;5;9:*.lzh=38;5;9:*.lzma=38;5;9:*.tlz=38;5;9:*.txz=38;5;9:*.tzo=38;5;9:*.t7z=38;5;9:*.zip=38;5;9:*.z=38;5;9:*.dz=38;5;9:*.gz=38;5;9:*.lrz=38;5;9:*.lz=38;5;9:*.lzo=38;5;9:*.xz=38;5;9:*.zst=38;5;9:*.tzst=38;5;9:*.bz2=38;5;9:*.bz=38;5;9:*.tbz=38;5;9:*.tbz2=38;5;9:*.tz=38;5;9:*.deb=38;5;9:*.rpm=38;5;9:*.jar=38;5;9:*.war=38;5;9:*.ear=38;5;9:*.sar=38;5;9:*.rar=38;5;9:*.alz=38;5;9:*.ace=38;5;9:*.zoo=38;5;9:*.cpio=38;5;9:*.7z=38;5;9:*.rz=38;5;9:*.cab=38;5;9:*.wim=38;5;9:*.swm=38;5;9:*.dwm=38;5;9:*.esd=38;5;9:*.jpg=38;5;13:*.jpeg=38;5;13:*.mjpg=38;5;13:*.mjpeg=38;5;13:*.gif=38;5;13:*.bmp=38;5;13:*.pbm=38;5;13:*.pgm=38;5;13:*.ppm=38;5;13:*.tga=38;5;13:*.xbm=38;5;13:*.xpm=38;5;13:*.tif=38;5;13:*.tiff=38;5;13:*.png=38;5;13:*.svg=38;5;13:*.svgz=38;5;13:*.mng=38;5;13:*.pcx=38;5;13:*.mov=38;5;13:*.mpg=38;5;13:*.mpeg=38;5;13:*.m2v=38;5;13:*.mkv=38;5;13:*.webm=38;5;13:*.ogm=38;5;13:*.mp4=38;5;13:*.m4v=38;5;13:*.mp4v=38;5;13:*.vob=38;5;13:*.qt=38;5;13:*.nuv=38;5;13:*.wmv=38;5;13:*.asf=38;5;13:*.rm=38;5;13:*.rmvb=38;5;13:*.flc=38;5;13:*.avi=38;5;13:*.fli=38;5;13:*.flv=38;5;13:*.gl=38;5;13:*.dl=38;5;13:*.xcf=38;5;13:*.xwd=38;5;13:*.yuv=38;5;13:*.cgm=38;5;13:*.emf=38;5;13:*.ogv=38;5;13:*.ogx=38;5;13:*.aac=38;5;45:*.au=38;5;45:*.flac=38;5;45:*.m4a=38;5;45:*.mid=38;5;45:*.midi=38;5;45:*.mka=38;5;45:*.mp3=38;5;45:*.mpc=38;5;45:*.ogg=38;5;45:*.ra=38;5;45:*.wav=38;5;45:*.oga=38;5;45:*.opus=38;5;45:*.spx=38;5;45:*.xspf=38;5;45:"'
++ read x v
++ echo 'MAIL="/var/spool/mail/nick"'
++ read x v
++ echo 'OLDPWD="/home/nick"'
++ read x v
++ echo 'PAGER="less"'
++ read x v
++ echo 'PATH="/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/nick/bin"'
++ read x v
++ echo 'PWD="/home/nick"'
++ read x v
++ echo 'SELINUX_LEVEL_REQUESTED=""'
++ read x v
++ echo 'SELINUX_ROLE_REQUESTED=""'
++ read x v
++ echo 'SELINUX_USE_CURRENT_RANGE=""'
++ read x v
++ echo 'SHELL="/usr/bin/zsh"'
++ read x v
++ echo 'SHLVL="3"'
++ read x v
++ echo 'SSH_AUTH_SOCK="/tmp/ssh-C92z8uyKwy/agent.5656"'
++ read x v
++ echo 'SSH_CLIENT="10.1.0.13' 58499 '22"'
++ read x v
++ echo 'SSH_CONNECTION="10.1.0.13' 58499 10.227.176.23 '22"'
++ read x v
++ echo 'SSH_TTY="/dev/pts/0"'
++ read x v
++ echo 'TERM="xterm-256color"'
++ read x v
++ echo 'USER="nick"'
++ read x v
++ echo 'XDG_RUNTIME_DIR="/run/user/1000"'
++ read x v
++ echo 'XDG_SESSION_ID="4"'
++ read x v
++ echo 'ZSH="/home/nick/.oh-my-zsh"'
++ read x v
++ echo '_="/usr/bin/sh"'
++ read x v
++ echo 'which_declare="typeset' '-f"'
++ read x v
++ create_service_file
++ '[' true = true ']'
++ create_systemd_service_file
++ info 'systemd: Creating service file /etc/systemd/system/k3s.service'
++ echo '[INFO] ' 'systemd: Creating service file /etc/systemd/system/k3s.service'
+[INFO]  systemd: Creating service file /etc/systemd/system/k3s.service
++ sudo tee /etc/systemd/system/k3s.service
++ '[' '' = true ']'
++ return 0
++ service_enable_and_start
++ '[' -f /proc/cgroups ']'
+++ grep memory /proc/cgroups
+++ read -r n n n enabled
+++ echo 1
+++ read -r n n n enabled
++ '[' 1 -eq 0 ']'
++ '[' '' = true ']'
++ '[' true = true ']'
++ systemd_enable
++ info 'systemd: Enabling k3s unit'
++ echo '[INFO] ' 'systemd: Enabling k3s unit'
+[INFO]  systemd: Enabling k3s unit
++ sudo systemctl enable /etc/systemd/system/k3s.service
+Created symlink /etc/systemd/system/multi-user.target.wants/k3s.service → /etc/systemd/system/k3s.service.
++ sudo systemctl daemon-reload
++ '[' '' = true ']'
++ '[' '' = true ']'
+++ get_installed_hashes
+++ sudo sha256sum /usr/local/bin/k3s /etc/systemd/system/k3s.service /etc/systemd/system/k3s.service.env
++ POST_INSTALL_HASHES='4c4288d0579d9c733e378e7bb352e38f707aa2e31724671e5062e2247b058f55  /usr/local/bin/k3s
+a38e86109f3caf36f266b7d9d2779b75c0ee358e1332bab62583e272d855d29f  /etc/systemd/system/k3s.service
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  /etc/systemd/system/k3s.service.env'
++ '[' 'sha256sum: /usr/local/bin/k3s: No such file or directory
+sha256sum: /etc/systemd/system/k3s.service: No such file or directory
+sha256sum: /etc/systemd/system/k3s.service.env: No such file or directory' = '4c4288d0579d9c733e378e7bb352e38f707aa2e31724671e5062e2247b058f55  /usr/local/bin/k3s
+a38e86109f3caf36f266b7d9d2779b75c0ee358e1332bab62583e272d855d29f  /etc/systemd/system/k3s.service
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  /etc/systemd/system/k3s.service.env' ']'
++ command -v iptables-save
++ command -v iptables-restore
++ sudo iptables-save
++ grep -v KUBE-
++ grep -v CNI-
++ sudo iptables-restore
++ grep -iv flannel
++ command -v ip6tables-save
++ command -v ip6tables-restore
++ sudo ip6tables-save
++ grep -v KUBE-
++ grep -v CNI-
++ grep -iv flannel
++ sudo ip6tables-restore
++ '[' true = true ']'
++ systemd_start
++ info 'systemd: Starting k3s'
++ echo '[INFO] ' 'systemd: Starting k3s'
+[INFO]  systemd: Starting k3s
++ sudo systemctl restart k3s
++ '[' '' = true ']'
++ return 0
++ cleanup
++ code=0
++ set +e
++ trap - EXIT
++ rm -rf /tmp/k3s-install.W2G1Mo360y
++ exit 0

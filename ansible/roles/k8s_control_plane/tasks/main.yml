@@ -1,2 +1,16 @@
 ---
 - import_tasks: prepare.yml
+
+# - name: check for k8s endpoint
+#   command: curl -k https://{{ k8s_api_endpoint }}:6443
+#   register: k8s_endpoint
+# 
+# - name: download k3s
+#   get_url:
+#     url: 
+# 
+# - name: bootstrap cluster
+#   include_tasks: bootstrap.yml
+#   when: k8s_endpoint.rc != 0
+
+

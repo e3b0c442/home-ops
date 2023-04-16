@@ -58,6 +58,7 @@
   loop:
     - gpg-agent.socket
     - gpg-agent-extra.socket
+  failed_when: False
 
 - name: kill any stray agents
   become_user: "{{ username }}"
