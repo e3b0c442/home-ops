@@ -28,12 +28,11 @@
     dest: /home/{{ username }}/.gnupg/gpg.conf
     mode: 0600
 
-- name: copy gpg-agent configuration
+- name: ensure no agent configuration
   become_user: "{{ username }}"
-  copy:
-    src: gpg-agent.conf
-    dest: /home/{{ username }}/.gnupg/gpg-agent.conf
-    mode: 0600
+  file:
+    path: /home/{{ username }}/.gnupg/gpg-agent.conf
+    state: absent
 
 - name: import gpg key
   become_user: "{{ username }}"
@@ -53,14 +52,14 @@
   become_user: "{{ username }}"
   systemd:
     scope: user
-    name:
-      - gpg-agent.socket
-      - gpg-agent-extra.socket
+    name: "{{ item }}"
     enabled: no
     state: stopped
+  loop:
+    - gpg-agent.socket
+    - gpg-agent-extra.socket
 
 - name: kill any stray agents
   become_user: "{{ username }}"
-  shell: 
-    cmd: pkill -u "{{ username }}" gpg-agent
-    ignore_errors: yes
+  ansible.builtin.shell: 
+    cmd: "pkill -u {{ username }} gpg-agent || :"
