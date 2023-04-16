@@ -20,6 +20,12 @@
     name: '*'
     state: latest
 
+- name: install and configure gnupg
+  include_role:
+    name: gnupg
+  vars:
+    username: "{{ local_username.stdout }}"
+
 - name: install and configure zsh
   include_role:
     name: zsh

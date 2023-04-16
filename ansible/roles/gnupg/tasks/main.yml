@@ -1,0 +1,66 @@
+---
+- name: enable PowerTools
+  community.general.ini_file:
+    path: /etc/yum.repos.d/almalinux-powertools.repo
+    section: powertools
+    option: enabled
+    value: 1
+
+- name: install gnupg packages
+  package:
+    name: 
+      - python3-packaging
+      - gnupg2
+      - pcsc-lite
+    state: present
+
+- name: create gnupg directory
+  become_user: "{{ username }}"
+  file:
+    path: /home/{{ username }}/.gnupg
+    state: directory
+    mode: 0700
+
+- name: copy gpg configuration
+  become_user: "{{ username }}"
+  template:
+    src: gpg.conf.j2
+    dest: /home/{{ username }}/.gnupg/gpg.conf
+    mode: 0600
+
+- name: copy gpg-agent configuration
+  become_user: "{{ username }}"
+  copy:
+    src: gpg-agent.conf
+    dest: /home/{{ username }}/.gnupg/gpg-agent.conf
+    mode: 0600
+
+- name: import gpg key
+  become_user: "{{ username }}"
+  gpg_key:
+    content: "{{ gpg_public_key }}"
+    trust: '5'
+
+- name: add unbind link to sshd config
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    line: 'StreamLocalBindUnlink yes'
+    insertafter: EOF
+    state: present
+  notify: restart sshd
+
+- name: disable systemd agent sockets
+  become_user: "{{ username }}"
+  systemd:
+    scope: user
+    name:
+      - gpg-agent.socket
+      - gpg-agent-extra.socket
+    enabled: no
+    state: stopped
+
+- name: kill any stray agents
+  become_user: "{{ username }}"
+  shell: 
+    cmd: pkill -u "{{ username }}" gpg-agent
+    ignore_errors: yes

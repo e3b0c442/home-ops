@@ -100,8 +100,4 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export GPG_TTY="$(tty)"
-[[ -z "$SSH_TTY" ]] && export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-gpgconf --launch gpg-agent
-
 PROMPT="%(!.%{%F{yellow}%}.)$USER@%{$fg[white]%}%m ${PROMPT}"
