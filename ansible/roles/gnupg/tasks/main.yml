@@ -62,4 +62,7 @@
 - name: kill any stray agents
   become_user: "{{ username }}"
   ansible.builtin.shell: 
-    cmd: "pkill -u {{ username }} gpg-agent || :"
+    cmd: "pkill -u {{ username }} gpg-agent"
+  register: pkill_result
+  changed_when: pkill_result.rc == 0
+  failed_when: False

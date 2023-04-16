@@ -31,3 +31,7 @@
     name: zsh
   vars:
     username: "{{ local_username.stdout }}"
+
+- name: setup SSH sudo
+  include_role:
+    name: ssh_sudo

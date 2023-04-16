@@ -1,0 +1,20 @@
+---
+- name: Install pam_ssh_agent_auth
+  package:
+    name: pam_ssh_agent_auth
+    state: present
+
+- name: update sudoers to preserve SSH_AUTH_SOCK
+  copy:
+    content: |
+      Defaults env_keep += "SSH_AUTH_SOCK"
+    dest: /etc/sudoers.d/ssh_auth_sock
+    mode: 0440
+    validate: 'visudo -cf %s'
+
+- name: add ssh agent auth to pam sudo
+  lineinfile:
+    path: /etc/pam.d/sudo
+    line: 'auth sufficient pam_ssh_agent_auth.so file=~/.ssh/authorized_keys'
+    insertafter: "#%PAM-1.0"
+    state: present
