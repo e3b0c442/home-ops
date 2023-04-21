@@ -1,0 +1,50 @@
+---
+- name: install bind
+  package:
+    name: 
+      - bind
+      - bind-utils
+    state: present
+
+- name: open dns port on firewall
+  firewalld:
+    service: dns
+    permanent: yes
+    state: enabled
+    immediate: yes
+
+- name: enable and start named
+  service:
+    name: named
+    enabled: yes
+    state: started
+
+- name: add infra.e3b0c442.dev zone
+  copy:
+    src: infra.e3b0c442.dev.zone
+    dest: /var/named/infra.e3b0c442.dev.zone
+    mode: 0640
+    owner: root
+    group: named
+    validate: 'named-checkzone infra.e3b0c442.dev %s'
+  notify: reload named
+
+- name: add 227.168.192.in-addr.arpa reverse zone
+  copy:
+    src: 227.168.192.in-addr.arpa.zone
+    dest: /var/named/227.168.192.in-addr.arpa.zone
+    mode: 0640
+    owner: root
+    group: named
+    validate: 'named-checkzone 227.168.192.in-addr.arpa %s'
+  notify: reload named
+
+- name: bind config
+  template:
+    src: named.conf.j2
+    dest: /etc/named.conf
+    mode: 0640
+    owner: root
+    group: named
+    validate: 'named-checkconf %s'
+  notify: reload named

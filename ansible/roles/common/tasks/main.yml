@@ -15,23 +15,23 @@
   hostname:
     name: "{{ inventory_hostname }}"
 
+- name: configure network
+  include_tasks: network.yml
+
 - name: update all packages
   package:
     name: '*'
     state: latest
 
 - name: install and configure gnupg
-  include_role:
-    name: gnupg
+  include_tasks: gnupg.yml
   vars:
     username: "{{ local_username.stdout }}"
 
 - name: install and configure zsh
-  include_role:
-    name: zsh
+  include_tasks: zsh.yml
   vars:
     username: "{{ local_username.stdout }}"
 
 - name: setup SSH sudo
-  include_role:
-    name: ssh_sudo
+  include_tasks: ssh_sudo.yml

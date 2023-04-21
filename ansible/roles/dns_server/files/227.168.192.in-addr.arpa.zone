@@ -1,0 +1,11 @@
+@   IN  SOA lewstherin.infra.e3b0c442.dev. hostmaster.e3b0c442.dev. (
+				10000       ; serial
+				60         ; refresh (1 minute)
+				300        ; retry (5 minutes)
+				3600       ; expire (1 hour)
+				60         ; minimum (1 minute)
+				)
+  IN NS	 lewstherin.infra.e3b0c442.dev.
+
+1 IN PTR router.infra.e3b0c442.dev.
+2 IN PTR lewstherin.e3b0c442.dev.

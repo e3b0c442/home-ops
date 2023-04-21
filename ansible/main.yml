@@ -1,14 +1,11 @@
-# Ansible playbook to install and configure a node
+---
 - hosts: all
   become: yes
-  tasks:
-    - import_role:
-        name: ansible_node
-    - import_role:
-        name: common
+  roles: 
+    - role: ansible_setup
+    - role: common
 
-- hosts: control_plane
+- hosts: dns_server
   become: yes
-  tasks:
-    - import_role:
-        name: k8s_control_plane
+  roles:
+    - role: dns_server

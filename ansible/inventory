@@ -1,4 +1,8 @@
-beta-3
+[dns_server:children]
+dns_server_primary
+dns_server_secondary
 
-[control_plane]
-beta-3
+[dns_server_primary]
+lewstherin
+
+[dns_server_secondary]

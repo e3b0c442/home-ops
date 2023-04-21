@@ -32,5 +32,9 @@ gpg_public_key: |
   qgx5PH7T8dT3ZgU=
   =pehC
   -----END PGP PUBLIC KEY BLOCK-----
-k8s_api_endpoint: "10.227.176.196"
-k8s_api_hostname: "kube-api"
+
+dns4: 
+  - '192.168.227.2'
+dns4_search: 
+  - 'infra.e3b0c442.dev'
+  - 'ourparadisefalls.com'

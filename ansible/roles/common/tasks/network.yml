@@ -1,0 +1,25 @@
+---
+- name: Add udev rule for network interface
+  template:
+    src: 70-persistent-net.rules.j2
+    dest: /etc/udev/rules.d/70-persistent-net.rules
+    mode: 0644
+    owner: root
+    group: root
+  register: udev_rule
+
+- name: Configure interfaces
+  nmcli:
+    conn_name: "{{ item.name }}"
+    type: ethernet
+    autoconnect: yes
+    ip4: "{{ item.ip4 }}"
+    gw4: "{{ item.gw4 }}"
+    dns4: "{{ dns4 }}"
+    dns4_search: "{{ dns4_search }}"
+    state: present
+  with_items: "{{ interfaces }}"
+
+- name: Reboot if udev rule changed
+  reboot:
+  when: udev_rule.changed

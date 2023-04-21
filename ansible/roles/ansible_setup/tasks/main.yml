@@ -7,6 +7,7 @@
     groups: wheel
     append: yes
     uid: 9999
+    
 - name: add ansible SSH key
   authorized_key:
     user: ansible
@@ -19,11 +20,4 @@
       ansible ALL=(ALL) NOPASSWD: ALL
     dest: /etc/sudoers.d/ansible
     mode: 0440
-    validate: 'visudo -cf %s'
-
-- name: temp remove ansible from sudoers
-  lineinfile:
-    path: /etc/sudoers
-    line: 'ansible ALL=(ALL) NOPASSWD: ALL'
-    state: absent
     validate: 'visudo -cf %s'
