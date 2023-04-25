@@ -9,3 +9,13 @@
   become: yes
   roles:
     - role: dns_server
+
+- hosts: dhcp_server
+  become: yes
+  roles:
+    - role: dhcp_server
+
+- hosts: k3s
+  become: yes
+  roles:
+    - role: k3s

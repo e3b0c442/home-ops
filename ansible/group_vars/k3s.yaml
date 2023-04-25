@@ -1,0 +1,4 @@
+---
+kube_api_ip: "10.227.176.196"
+kube_api_host: "api.cluster.e3b0c442.dev"
+k3s_version: v1.26.4+k3s1

@@ -1,0 +1,8 @@
+---
+- name: create uninstall script
+  copy:
+    src: k3s-agent-uninstall.sh
+    dest: /usr/local/bin/k3s-agent-uninstall.sh
+    owner: root
+    group: root
+    mode: 0755

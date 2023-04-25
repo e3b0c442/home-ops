@@ -1,0 +1,28 @@
+---
+- name: install dhcp-server
+  package:
+    name: dhcp-server
+    state: present
+
+- name: open dhcp port on firewall
+  firewalld:
+    service: dhcp
+    permanent: yes
+    state: enabled
+    immediate: yes
+
+- name: dhcpd config
+  copy:
+    src: dhcpd.conf
+    dest: /etc/dhcp/dhcpd.conf
+    mode: 0644
+    owner: root
+    group: root
+    validate: 'dhcpd -t -cf %s'
+  notify: restart dhcpd
+
+- name: enable and start dhcpd
+  service:
+    name: dhcpd
+    enabled: yes
+    state: started

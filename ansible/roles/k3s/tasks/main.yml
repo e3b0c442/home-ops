@@ -1,0 +1,16 @@
+---
+- name: set up k3s prerequisites
+  import_tasks: prereq.yml
+
+- name: download k3s
+  import_tasks: download.yml
+
+- name: set up k3s server
+  import_role:
+    name: k3s_server
+  when: "'k3s_server' in group_names"
+
+- name: set up k3s agent
+  import_role:
+    name: k3s_agent
+  when: "'k3s_agent' in group_names"

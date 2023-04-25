@@ -77,9 +77,23 @@ zone "infra.e3b0c442.dev" {
     allow-transfer { none; };
 };
 
+zone "cluster.e3b0c442.dev" {
+    type master;
+    file "cluster.e3b0c442.dev.zone";
+    allow-query { 192.168.227.0/16; 10.1.0.0/16; };
+    allow-transfer { none; };
+};
+
 zone "227.186.192.in-addr.arpa" {
     type master;
     file "227.186.192.in-addr.arpa.zone";
+    allow-query { 192.168.227.0/16; 10.1.0.0/16; };
+    allow-transfer { none; };
+};
+
+zone "176.227.10.in-addr.arpa" {
+    type master;
+    file "176.227.10.in-addr.arpa.zone";
     allow-query { 192.168.227.0/16; 10.1.0.0/16; };
     allow-transfer { none; };
 };
