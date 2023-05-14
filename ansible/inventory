@@ -1,5 +1,5 @@
 [dns_server_primary]
-lewstherin
+svc1
 
 [dns_server_secondary]
 
@@ -8,7 +8,7 @@ dns_server_primary
 dns_server_secondary
 
 [dhcp_server_primary]
-lewstherin
+svc1
 
 [dhcp_server_secondary]
 
@@ -16,10 +16,14 @@ lewstherin
 dhcp_server_primary
 dhcp_server_secondary
 
+[omada_controller]
+svc1
+
 [k3s_server]
-lewstherin
+node1
 
 [k3s_agent]
+node8
 
 [k3s:children]
 k3s_server

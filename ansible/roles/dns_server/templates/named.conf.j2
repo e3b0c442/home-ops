@@ -21,6 +21,9 @@ options {
 	allow-query { 
         localhost;
         {{ ansible_default_ipv4.network }}/{{ ansible_default_ipv4.prefix }};
+        {% for network in allowed_networks %}
+            {{ network }};
+        {% endfor %}
     };
 
 	/* 
@@ -70,31 +73,69 @@ zone "." IN {
 	file "named.ca";
 };
 
-zone "infra.e3b0c442.dev" {
+zone "no.e3b0c442.dev" {
     type master;
-    file "infra.e3b0c442.dev.zone";
-    allow-query { 192.168.227.0/16; 10.1.0.0/16; };
+    file "no.e3b0c442.dev.zone";
+    allow-query {
+        192.168.0.0/16;
+        10.1.0.0/16;
+        10.42.0.0/16;
+    };
+    allow-transfer { none; };
+};
+
+zone "net.ourparadisefalls.com" {
+    type master;
+    file "net.ourparadisefalls.com.zone";
+    allow-query {
+        192.168.0.0/16;
+        10.1.0.0/16;
+        10.42.0.0/16;
+    };
     allow-transfer { none; };
 };
 
 zone "cluster.e3b0c442.dev" {
     type master;
     file "cluster.e3b0c442.dev.zone";
-    allow-query { 192.168.227.0/16; 10.1.0.0/16; };
+    allow-query {
+        192.168.227.0/16;
+        10.1.0.0/16;
+        10.42.0.0/16;
+    };
     allow-transfer { none; };
 };
 
-zone "227.186.192.in-addr.arpa" {
+zone "1.168.192.in-addr.arpa" {
     type master;
-    file "227.186.192.in-addr.arpa.zone";
-    allow-query { 192.168.227.0/16; 10.1.0.0/16; };
+    file "1.168.192.in-addr.arpa.zone";
+    allow-query {
+        192.168.0.0/16; 
+        10.1.0.0/16;
+        10.42.0.0/16;
+    };
+    allow-transfer { none; };
+};
+
+zone "227.168.192.in-addr.arpa" {
+    type master;
+    file "227.168.192.in-addr.arpa.zone";
+    allow-query {
+        192.168.0.0/16; 
+        10.1.0.0/16;
+        10.42.0.0/16;
+    };
     allow-transfer { none; };
 };
 
 zone "176.227.10.in-addr.arpa" {
     type master;
     file "176.227.10.in-addr.arpa.zone";
-    allow-query { 192.168.227.0/16; 10.1.0.0/16; };
+    allow-query { 
+        192.168.227.0/16; 
+        10.1.0.0/16; 
+        10.42.0.0/16; 
+    };
     allow-transfer { none; };
 };
 

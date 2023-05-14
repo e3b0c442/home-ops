@@ -1,4 +1,24 @@
 ---
+- name: Add NIST timeservers to chrony config
+  copy:
+    src: chrony.conf
+    dest: /etc/chrony.conf
+    mode: 0644
+    owner: root
+    group: root
+    validate: 'chronyd -t %s'
+  when: ansible_machine == 'aarch64'
+
+- name: Enable chronyd and chrony-wait
+  service:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  loop:
+    - chronyd
+    - chrony-wait
+  when: ansible_machine == 'aarch64'
+
 - name: install bind
   package:
     name: 
@@ -13,31 +33,45 @@
     state: enabled
     immediate: yes
 
+- name: ensure named waits for chrony
+  copy:
+    src: named.service
+    dest: /usr/lib/systemd/system/named.service
+    mode: 0644
+    owner: root
+    group: root
+  when: ansible_machine == 'aarch64'
+
+- name: really ensure named waits for chrony
+  lineinfile:
+    path: /usr/lib/systemd/system/named.service
+    line: "After=time-sync.target"
+    state: present
+    create: yes
+  when: ansible_machine == 'aarch64'
+
 - name: enable and start named
   service:
     name: named
     enabled: yes
     state: started
 
-- name: add infra.e3b0c442.dev zone
+- name: add zone files
   copy:
-    src: infra.e3b0c442.dev.zone
-    dest: /var/named/infra.e3b0c442.dev.zone
+    src: "{{ item }}.zone"
+    dest: /var/named/{{ item }}.zone
     mode: 0640
     owner: root
     group: named
-    validate: 'named-checkzone infra.e3b0c442.dev %s'
+    validate: 'named-checkzone {{ item }} %s'
   notify: reload named
-
-- name: add 227.168.192.in-addr.arpa reverse zone
-  copy:
-    src: 227.168.192.in-addr.arpa.zone
-    dest: /var/named/227.168.192.in-addr.arpa.zone
-    mode: 0640
-    owner: root
-    group: named
-    validate: 'named-checkzone 227.168.192.in-addr.arpa %s'
-  notify: reload named
+  loop:
+    - net.ourparadisefalls.com
+    - 1.168.192.in-addr.arpa
+    - no.e3b0c442.dev
+    - 227.168.192.in-addr.arpa
+    - cluster.e3b0c442.dev
+    - 176.227.10.in-addr.arpa
 
 - name: bind config
   template:

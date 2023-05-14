@@ -1,0 +1,7 @@
+---
+interfaces:
+  - name: eth0
+    type: ethernet
+    mac: 'dc:a6:32:6d:c0:88'
+    ip4: '192.168.227.8/24'
+    gw4: '192.168.227.254'

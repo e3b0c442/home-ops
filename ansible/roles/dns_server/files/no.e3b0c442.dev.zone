@@ -7,4 +7,13 @@
 				)
            IN NS svc1.net.ourparadisefalls.com.
 
-api        IN A  10.227.176.196
+node1   IN  A   192.168.227.1
+node2   IN  A   192.168.227.2
+node3   IN  A   192.168.227.3
+node4   IN  A   192.168.227.4
+node5   IN  A   192.168.227.5
+node6   IN  A   192.168.227.6
+node7   IN  A   192.168.227.7
+node8   IN  A   192.168.227.8
+
+rtr     IN  A   192.168.227.254

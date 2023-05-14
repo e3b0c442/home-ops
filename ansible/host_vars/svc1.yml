@@ -1,0 +1,18 @@
+---
+interfaces:
+  - name: eth0
+    type: ethernet
+    mac: 'b8:27:eb:37:52:70'
+    ip4: '192.168.1.1/24'
+    gw4: '192.168.1.254'
+#  - name: eth0.227
+#    type: vlan
+#    vlanid: 227
+#    vlandev: eth0
+#    ip4: '192.168.227.1/24'
+#    routes4_extended:
+#      - ip: '0.0.0.0/0'
+#        next_hop: '192.168.227.254'
+#        table: '227'
+#    routing_rules4:
+#      - "priority 227 from 192.168.227.0/24 table 227"

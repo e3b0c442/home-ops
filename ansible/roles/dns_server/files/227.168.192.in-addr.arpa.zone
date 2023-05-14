@@ -1,11 +1,19 @@
-@   IN  SOA lewstherin.infra.e3b0c442.dev. hostmaster.e3b0c442.dev. (
+@   IN  SOA svc1.net.ourparadisefalls.com. hostmaster.ourparadisefalls.com. (
 				10000       ; serial
 				60         ; refresh (1 minute)
 				300        ; retry (5 minutes)
 				3600       ; expire (1 hour)
 				60         ; minimum (1 minute)
 				)
-  IN NS	 lewstherin.infra.e3b0c442.dev.
+  IN NS	 svc1.net.ourparadisefalls.com.
 
-1 IN PTR router.infra.e3b0c442.dev.
-2 IN PTR lewstherin.e3b0c442.dev.
+1   IN PTR node1.no.e3b0c442.dev.
+2   IN PTR node2.no.e3b0c442.dev.
+3   IN PTR node3.no.e3b0c442.dev.
+4   IN PTR node4.no.e3b0c442.dev.
+5   IN PTR node5.no.e3b0c442.dev.
+6   IN PTR node6.no.e3b0c442.dev.
+7   IN PTR node7.no.e3b0c442.dev.
+8   IN PTR node8.no.e3b0c442.dev.
+
+254 IN PTR rtr.no.e3b0c442.dev.

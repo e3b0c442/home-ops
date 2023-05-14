@@ -3,19 +3,29 @@
   become: yes
   roles: 
     - role: ansible_setup
+      tags: ansible_setup
     - role: common
+      tags: common
 
 - hosts: dns_server
   become: yes
   roles:
     - role: dns_server
+      tags: dns_server
 
 - hosts: dhcp_server
   become: yes
   roles:
     - role: dhcp_server
+      tags: dhcp_server
 
-- hosts: k3s
+- hosts: omada_controller
   become: yes
   roles:
-    - role: k3s
+    - role: omada_controller
+      tags: omada_controller
+
+#- hosts: k3s
+#  become: yes
+#  roles:
+#    - role: k3s

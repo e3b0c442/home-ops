@@ -34,7 +34,9 @@ gpg_public_key: |
   -----END PGP PUBLIC KEY BLOCK-----
 
 dns4: 
-  - '192.168.227.2'
+  - '192.168.1.1'
 dns4_search: 
-  - 'infra.e3b0c442.dev'
+  - 'no.e3b0c442.dev'
+  - 'cluster.e3b0c442.dev'
+  - 'net.ourparadisefalls.com'
   - 'ourparadisefalls.com'

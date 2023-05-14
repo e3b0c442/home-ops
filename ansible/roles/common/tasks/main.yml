@@ -11,12 +11,24 @@
     key: "{{ lookup('file', 'ssh.pub') }}"
     state: present
 
+- name: add local username to wheel
+  user:
+    name: "{{ local_username.stdout }}"
+    groups: wheel
+    append: yes
+
 - name: set hostname
   hostname:
     name: "{{ inventory_hostname }}"
 
 - name: configure network
   include_tasks: network.yml
+
+- name: ensure firewall is up
+  service:
+    name: firewalld
+    state: started
+    enabled: yes
 
 - name: update all packages
   package:

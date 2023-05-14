@@ -1,0 +1,1 @@
+dns_cloudflare_api_token = {{ lookup('community.general.onepassword', 'certbot-cloudflare-api-token', master_password=vault_master_password, vault='home-lab') }}

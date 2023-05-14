@@ -1,0 +1,55 @@
+[Unit]
+Description=omada-controller.service
+Documentation=man:podman-generate-systemd(1)
+Wants=network-online.target
+After=network-online.target
+RequiresMountsFor=%t/containers
+
+[Service]
+Environment=PODMAN_SYSTEMD_UNIT=%n
+Restart=always
+TimeoutStopSec=70
+ExecStartPre=/bin/rm -f %t/%n.ctr-id
+ExecStart=/usr/bin/podman run \
+	--cidfile=%t/%n.ctr-id \
+	--cgroups=no-conmon \
+	--rm \
+	--sdnotify=conmon \
+	--replace \
+	--name omada-controller \
+	--ulimit nofile=4096:8192 \
+	--log-driver journald \
+	-p 8088:8088 \
+	-p 8043:8043 \
+	-p 8843:8843 \
+	-p 27001:27001/udp \
+	-p 29810:29810/udp \
+	-p 29811:29811 \
+	-p 29812:29812 \
+	-p 29813:29813 \
+	-p 29814:29814 \
+	-e MANAGE_HTTP_PORT=8088 \
+	-e MANAGE_HTTPS_PORT=8043 \
+	-e PGID=508 \
+	-e PORTAL_HTTP_PORT=8088 \
+	-e PORTAL_HTTPS_PORT=8843 \
+	-e PORT_ADOPT_V1=29812 \
+	-e PORT_APP_DISCOVERY=27001 \
+	-e PORT_DISCOVERY=29810 \
+	-e PORT_MANAGER_V1=29811 \
+	-e PORT_MANAGER_V2=29814 \
+	-e PORT_UPGRADE_V1=29813 \
+	-e PUID=508 \
+	-e SHOW_SERVER_LOGS=true \
+	-e SHOW_MONGODB_LOGS=false \
+	-e TZ=Etc/UTC \
+	-v /opt/tplink/EAPController/data:/opt/tplink/EAPController/data:z \
+	-v /opt/tplink/EAPController/logs:/opt/tplink/EAPController/logs:z \
+	-v /opt/tplink/EAPController/cert:/cert:z mbentley/omada-controller:5.9
+ExecStop=/usr/bin/podman stop --ignore --cidfile=%t/%n.ctr-id
+ExecStopPost=/usr/bin/podman rm -f --ignore --cidfile=%t/%n.ctr-id
+Type=notify
+NotifyAccess=all
+
+[Install]
+WantedBy=default.target

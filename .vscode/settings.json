@@ -1,0 +1,5 @@
+{
+    "yaml.schemas": {
+        "https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/tasks": "file:///Users/nick/git/github.com/e3b0c442/home-ops/ansible/roles/omada_controller/tasks/certificate.yml"
+    }
+}

@@ -11,15 +11,27 @@
 - name: Configure interfaces
   nmcli:
     conn_name: "{{ item.name }}"
-    type: ethernet
+    type: "{{ item.type }}"
     autoconnect: yes
+    vlanid: "{{ item.vlanid | default(omit) }}"
+    vlandev: "{{ item.vlandev | default(omit) }}"
     ip4: "{{ item.ip4 }}"
-    gw4: "{{ item.gw4 }}"
+    gw4: "{{ item.gw4 | default(omit) }}"
     dns4: "{{ dns4 }}"
     dns4_search: "{{ dns4_search }}"
+    routes4_extended: "{{ item.routes4_extended | default(omit) }}"
+    routing_rules4: "{{ item.routing_rules4 | default(omit) }}"
     state: present
   with_items: "{{ interfaces }}"
 
 - name: Reboot if udev rule changed
   reboot:
   when: udev_rule.changed
+
+- name: Disable WiFi controller on Raspberry Pi
+  lineinfile:
+    path: /boot/config.txt
+    line: "dtoverlay=disable-wifi"
+    state: present
+    create: yes
+  when: ansible_machine == 'aarch64' # placeholder for Raspberry Pi

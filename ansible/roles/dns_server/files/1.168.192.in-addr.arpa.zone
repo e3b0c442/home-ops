@@ -7,4 +7,10 @@
 				)
   IN NS	 svc1.net.ourparadisefalls.com.
 
-176 IN PTR api.cluster.e3b0c442.dev.
+1   IN PTR svc1.net.ourparadisefalls.com.
+
+129 IN PTR psw1.net.ourparadisefalls.com.
+
+193 IN PTR wap1.net.ourparadisefalls.com.
+
+254 IN PTR rtr.net.ourparadisefalls.com.
