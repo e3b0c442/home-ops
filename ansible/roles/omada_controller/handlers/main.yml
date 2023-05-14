@@ -1,6 +1,0 @@
----
-- name: Restart omada controller
-  systemd:
-    name: omada-controller.service
-    state: restarted
-    daemon_reload: yes

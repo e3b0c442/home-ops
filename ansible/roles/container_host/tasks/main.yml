@@ -1,6 +1,0 @@
----
-- name: Install container-tools module
-  package:
-    name: "@container-tools:rhel8"
-    state: present
- 

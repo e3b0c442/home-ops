@@ -19,12 +19,6 @@
     - role: dhcp_server
       tags: dhcp_server
 
-- hosts: omada_controller
-  become: yes
-  roles:
-    - role: omada_controller
-      tags: omada_controller
-
 #- hosts: k3s
 #  become: yes
 #  roles:

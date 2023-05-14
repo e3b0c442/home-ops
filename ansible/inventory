@@ -16,9 +16,6 @@ svc1
 dhcp_server_primary
 dhcp_server_secondary
 
-[omada_controller]
-svc1
-
 [k3s_server]
 node1
 
