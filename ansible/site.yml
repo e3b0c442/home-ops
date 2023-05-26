@@ -19,7 +19,19 @@
     - role: dhcp_server
       tags: dhcp_server
 
-#- hosts: k3s
-#  become: yes
-#  roles:
-#    - role: k3s
+- hosts: avahi
+  become: yes
+  roles:
+    - role: avahi
+      tags: avahi
+
+- hosts: k3s
+  gather_facts: yes
+  become: yes
+  roles:
+    - role: k3s/prereq
+      tags: k3s/prereq
+    - role: k3s/download
+      tags: k3s/download
+    - role: k3s/raspberrypi
+      tags: k3s/raspberrypi

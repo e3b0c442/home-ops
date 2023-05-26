@@ -1,0 +1,21 @@
+---
+- name: Install avahi
+  dnf:
+    name: avahi
+    state: latest
+
+- name: Add avahi-daemon config
+  copy:
+    src: avahi-daemon.conf
+    dest: /etc/avahi/avahi-daemon.conf
+    mode: 0644
+    owner: root
+    group: root
+    validate: 'avahi-daemon -c -f %s'
+  notify: Restart avahi-daemon
+
+- name: Enable and start avahi-daemon
+  service:
+    name: avahi-daemon
+    state: started
+    enabled: yes

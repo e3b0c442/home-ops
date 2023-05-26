@@ -30,12 +30,6 @@
     url: https://kube-vip.io/manifests/rbac.yaml
     dest: /var/lib/rancher/k3s/server/manifests/kube-vip-rbac.yaml
 
-- name: temp remove old deployment
-  file:
-    path: /var/lib/rancher/k3s/server/manifests/kube-vip-deployment.yaml
-    state: absent
-  ignore_errors: true
-  
 - name: add kube-vip deployment manifest
   template:
     src: kube-vip-ds.yaml.j2

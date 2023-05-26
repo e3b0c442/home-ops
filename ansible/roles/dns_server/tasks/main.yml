@@ -72,6 +72,9 @@
     - 227.168.192.in-addr.arpa
     - cluster.e3b0c442.dev
     - 176.227.10.in-addr.arpa
+    - ourparadisefalls.com
+    - 0.1.10.in-addr.arpa
+    - 227.1.10.in-addr.arpa
 
 - name: bind config
   template:

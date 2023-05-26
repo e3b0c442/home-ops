@@ -5,6 +5,19 @@ interfaces:
     mac: 'b8:27:eb:37:52:70'
     ip4: '192.168.1.1/24'
     gw4: '192.168.1.254'
+#  - name: eth0.2
+#    type: vlan
+#    vlanid: 2
+#    vlandev: eth0
+#    mac: '82:32:4e:d2:45:8e'
+#    ip4: '192.168.2.1/24'
+#    routes4_extended:
+#      - ip: '0.0.0.0/0'
+#        next_hop: '192.168.2.254'
+#        table: '2'
+#    routing_rules4:
+#      - "priority 200 iif eth0.2 lookup 2"
+#      - "priority 201 from 192.168.2.0/24 lookup 2"
 #  - name: eth0.227
 #    type: vlan
 #    vlanid: 227

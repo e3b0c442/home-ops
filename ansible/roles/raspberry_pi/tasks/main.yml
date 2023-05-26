@@ -1,0 +1,10 @@
+---
+- name: Update cmdline.txt with needed kubernetes arguments
+  copy:
+    dest: /boot/cmdline.txt
+    content: "cgroup_enable=memory cgroup_memory=1 console=ttyAMA0,115200 console=tty1 root=PARTUUID=52d9a036-03 rootfstype=ext4 elevator=deadline rootwait"
+  register: cmdline
+
+- name: reboot if cmdline.txt changed
+  reboot:
+  when: cmdline.changed

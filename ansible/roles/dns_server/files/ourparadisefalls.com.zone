@@ -1,0 +1,63 @@
+@   IN  SOA svc1.net.ourparadisefalls.com. hostmaster.ourparadisefalls.com. (
+			    10000      ; serial
+				60         ; refresh (1 minute)
+				300        ; retry (5 minutes)
+				3600       ; expire (1 hour)
+				60         ; minimum (1 minute)
+				)
+			IN NS svc1.net.ourparadisefalls.com.
+
+svc1.net A 192.168.1.1
+
+router              A       10.1.0.1
+pi3                 A       10.1.0.2
+omada-c006c3aa80ee  A       10.1.0.3
+spiritofadventure   A       10.1.0.4
+
+alpha               A       10.1.0.10
+omega               A       10.1.0.19
+beta                A       10.1.0.20
+gamma               A       10.1.0.30
+carl                A       10.1.0.12
+russell             A       10.1.0.13
+
+kube                A       10.227.176.196
+k3s-master          A       10.1.227.176
+ingress-nginx       A       10.1.227.4
+git                 A       10.1.227.103
+omada-portal        A       10.1.227.101
+
+alertmanager        CNAME   ingress-nginx
+bazarr              CNAME   ingress-nginx
+changedetection     CNAME   ingress-nginx
+consul              CNAME   ingress-nginx
+grafana	            CNAME   ingress-nginx
+k2g                 CNAME   ingress-nginx
+k8s                 CNAME   ingress-nginx
+longhorn            CNAME   ingress-nginx
+minio               CNAME   ingress-nginx
+minio-console       CNAME   ingress-nginx
+omada               CNAME   ingress-nginx
+paperless           CNAME   ingress-nginx
+plex                CNAME   ingress-nginx
+prowlarr            CNAME   ingress-nginx
+prometheus          CNAME   ingress-nginx
+qbt-media           CNAME   ingress-nginx
+radarr              CNAME   ingress-nginx
+registry            CNAME   ingress-nginx
+sonarr              CNAME   ingress-nginx
+stackgres           CNAME   ingress-nginx
+teslamate           CNAME   ingress-nginx
+trx-novpn           CNAME   ingress-nginx
+trxx                CNAME   ingress-nginx
+vdo                 CNAME   ingress-nginx
+
+beta-1              A       10.1.20.1
+beta-2              A       10.1.20.2
+beta-3              A       10.227.176.23
+
+pi4-0-csw           A       10.1.40.0
+pi4-0-1             A       10.1.40.1
+pi4-0-2             A       10.1.40.2
+pi4-0-3             A       10.1.40.3
+pi4-0-4             A       10.1.40.4

@@ -1,0 +1,10 @@
+---
+ansible_host: 192.168.227.3
+ip: 192.168.227.3
+access_ip: 192.168.227.3
+interfaces:
+  - name: eth0
+    type: ethernet
+    mac: 'e0:d5:5e:21:8f:93'
+    ip4: '192.168.227.3/24'
+    gw4: '192.168.227.254'

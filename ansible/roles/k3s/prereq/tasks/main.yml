@@ -1,6 +1,4 @@
 ---
-- import_tasks: raspberry_pi.yml
-
 - name: add k3s-selinux repo
   yum_repository:
     name: rancher-k3s-common-stable
@@ -37,10 +35,12 @@
 
 - name: Set bridge-nf-call-iptables (just to be sure)
   sysctl:
-    name: net.bridge.bridge-nf-call-iptables
+    name: "{{ item }}"
     value: "1"
     state: present
     reload: yes
+  loop:
+    - net.bridge.bridge-nf-call-iptables
 
 - name: Add /usr/local/bin to sudo secure_path
   lineinfile:
@@ -50,34 +50,3 @@
     insertafter: EOF
     path: /etc/sudoers
     validate: 'visudo -cf %s'
-  
-- name: open firewall for kube api
-  firewalld:
-    port: "6443/tcp"
-    permanent: yes
-    state: enabled
-    immediate: yes
-
-- name: open firewall for pod and service cidrs
-  firewalld:
-    source: "{{ item }}"
-    permanent: yes
-    state: enabled
-    immediate: yes
-  loop:
-    - "10.42.0.0/16"
-    - "10.43.0.0/16"
-
-- name: disable nm-cloud-setup
-  systemd:
-    name: "{{ item }}"
-    enabled: no
-  register: nm_cloud_setup
-  loop:
-    - nm-cloud-setup.service
-    - nm-cloud-setup.timer
-  ignore_errors: true
-
-- name: reboot if nm-cloud-setup was enabled
-  reboot:
-  when: nm_cloud_setup.changed

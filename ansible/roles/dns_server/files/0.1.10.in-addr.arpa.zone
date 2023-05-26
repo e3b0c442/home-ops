@@ -1,0 +1,21 @@
+@   IN  SOA svc1.net.ourparadisefalls.com. hostmaster.ourparadisefalls.com. (
+				10000       ; serial
+				60         ; refresh (1 minute)
+				300        ; retry (5 minutes)
+				3600       ; expire (1 hour)
+				60         ; minimum (1 minute)
+				)
+@	IN	NS	alpha.ourparadisefalls.com.
+@	IN	NS	pi3.ourparadisefalls.com.
+
+1	PTR router.ourparadisefalls.com.
+2	PTR pi3.ourparadisefalls.com.
+3	PTR omada-c006c3aa80ee.ourparadisefalls.com.
+4	PTR spiritofadventure.ourparadisefalls.com.
+
+10	PTR alpha.ourparadisefalls.com.
+12	PTR carl.ourparadisefalls.com.
+13	PTR russell.ourparadisefalls.com.
+
+20  PTR beta.ourparadisefalls.com.
+30  PTR gamma.ourparadisefalls.com.

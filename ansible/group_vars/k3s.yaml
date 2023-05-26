@@ -2,3 +2,7 @@
 kube_api_ip: "10.227.176.196"
 kube_api_host: "api.cluster.e3b0c442.dev"
 k3s_version: v1.26.4+k3s1
+systemd_dir: /etc/systemd/system
+master_ip: "{{ hostvars[groups['k3s_server'][0]]['ansible_host'] | default(groups['k3s_server'][0]) }}"
+extra_server_args: ""
+extra_agent_args: ""
