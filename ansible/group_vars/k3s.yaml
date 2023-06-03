@@ -1,4 +1,10 @@
 ---
 k3s_version: v1.26.5+k3s1
-apiserver_endpoint: "10.227.176.196"
-apiserver_hostname: "api.cluster.e3b0c442.dev"
+ansible_user: ansible
+systemd_dir: /etc/systemd/system
+primary_server_ip: "{{ hostvars[groups['k3s_server'][0]]['ansible_host'] | default(groups['k3s_server'][0]) }}"
+extra_server_args: "{{ selinux | ternary('--selinux', '') }}"
+extra_agent_args: "{{ selinux | ternary('--selinux', '') }}"
+
+kube_api_vip: "10.227.176.196"
+k3s_selinux: true
