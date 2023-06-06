@@ -25,26 +25,22 @@
     - role: avahi
       tags: avahi
 
-- hosts: k3s_server
-  become: yes
-  roles:
-    - role: k3s_server
-      tags: k3s_server
-
 - hosts: k3s_cluster
   gather_facts: yes
   become: yes
   roles:
     - role: k3s/prereq
-    - role: k3s/download
-    - role: k3s/raspberrypi
+      tags: k3s_prereq
 
 - hosts: k3s_server
   become: yes
   roles:
-    - role: k3s/server
+    - role: k3s/server/prereq
+      tags: k3s_server_prereq
 
 - hosts: k3s_agent
   become: yes
   roles:
-    - role: k3s/agent
+    - role: k3s/agent/prereq
+      tags: k3s_agent_prereq
+

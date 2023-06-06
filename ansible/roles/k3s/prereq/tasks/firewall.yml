@@ -1,0 +1,21 @@
+---
+- name: add pod and service networks to trusted zone
+  firewalld:
+    zone: trusted
+    source: "{{ item }}"
+    permanent: yes
+    state: enabled
+    immediate: yes
+  loop:
+    - 10.42.0.0/16
+    - 10.43.0.0/16
+
+- name: open ports requried by servers and agents
+  firewalld:
+    port: "{{ item }}"
+    permanent: yes
+    state: enabled
+    immediate: yes
+  loop:
+    - "8472/udp"
+    - "10250/tcp"
