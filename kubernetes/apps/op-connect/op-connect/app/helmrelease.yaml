@@ -21,8 +21,8 @@ spec:
         imageRepository: 1password/connect-api
       sync:
         imageRepository: 1password/connect-sync
-      version: "1.6.1"
+      version: "1.7.0"
     operator:
       create: true
       imageRepository: 1password/onepassword-operator
-      version: "1.6.0"
+      version: "1.7.0"
