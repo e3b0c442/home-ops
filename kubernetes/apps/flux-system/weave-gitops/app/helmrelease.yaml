@@ -16,3 +16,6 @@ spec:
         name: weave-gitops
   values:
     logLevel: debug
+    rbac:
+      impersonationResourceNames:
+        - admin
