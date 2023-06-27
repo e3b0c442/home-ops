@@ -10,10 +10,10 @@ spec:
     spec:
       # renovate: registryUrl=https://1password.github.io/connect-helm-charts/
       chart: connect
-      version: 1.11.0
+      version: "1.11.0"
       sourceRef:
         kind: HelmRepository
-        name: 1password-charts
+        name: op-connect
         namespace: flux-system
   values:
     connect:
