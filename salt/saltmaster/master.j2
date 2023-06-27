@@ -1,0 +1,22 @@
+ext_pillar:
+  - git:
+    - main https://github.com/e3b0c442/home-ops.git:
+      - env: base
+      - root: pillar
+      - user: {{ user }}
+      - password: {{ password }}
+fileserver_backend:
+  - gitfs
+gitfs_remotes:
+  - https://github.com/saltstack-formulas/docker-formula.git
+  - https://github.com/saltstack-formulas/kubernetes-formula.git
+  - https://github.com/saltstack-formulas/golang-formula.git
+  - https://github.com/saltstack-formulas/node-formula.git:
+    - base: v2.1.0
+  - https://github.com/e3b0c442/homestack.git:
+    - base: main
+    - root: salt
+    - user: {{ user }}
+    - password: {{ password }}
+pillar_merge_lists: True
+top_file_merging_strategy: same

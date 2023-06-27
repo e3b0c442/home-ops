@@ -12,6 +12,11 @@ spec:
   secretRef:
     name: flux-system
   url: ssh://git@github.com/e3b0c442/home-ops
+  ignore: |
+    # exclude all
+    /*
+    # include kubernetes directory
+    !/kubernetes
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -20,7 +25,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m0s
-  path: ./kubernetes
+  path: ./kubernetes/flux
   prune: true
   sourceRef:
     kind: GitRepository
