@@ -6,7 +6,7 @@ metadata:
   name: flux-system
   namespace: flux-system
 spec:
-  interval: 1m0s
+  interval: 1m
   ref:
     branch: main
   secretRef:
@@ -24,7 +24,7 @@ metadata:
   name: flux-system
   namespace: flux-system
 spec:
-  interval: 10m0s
+  interval: 5m
   path: ./kubernetes/flux
   prune: true
   sourceRef:
