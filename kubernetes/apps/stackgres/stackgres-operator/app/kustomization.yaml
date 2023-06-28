@@ -4,4 +4,5 @@ resources:
   - stackgres-authentication-item.yaml
   - certificate.yaml
   - helmrelease.yaml
+  - ingress.yaml
   

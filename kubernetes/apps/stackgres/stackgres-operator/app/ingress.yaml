@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: stackgres
+  name: stackgres-operator
+  labels:
+    app: stackgres-restapi
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: stackgres.svc.e3b0c442.dev
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: stackgres-restapi
+                port:
+                  number: 443
+  tls:
+    - hosts:
+        - stackgres.ourparadisefalls.com
+      secretName: stackgres-svc-e3b0c442-dev-tls
+  
