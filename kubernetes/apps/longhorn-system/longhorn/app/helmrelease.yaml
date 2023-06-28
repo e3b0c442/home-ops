@@ -19,5 +19,7 @@ spec:
       enabled: true
       ingressClassName: traefik
       host: longhorn.svc.e3b0c442.dev
+      annotations:
+        traefik.ingress.kubernetes.io/router.tls: "true"
       tls: true
       tlsSecret: svc-e3b0c442-dev-tls
