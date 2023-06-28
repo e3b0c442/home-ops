@@ -1,0 +1,17 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: svc-e3b0c442-dev
+  namespace: kube-system
+spec:
+  secretName: svc-e3b0c442-dev-tls
+  privateKey:
+    rotationPolicy: Always
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: "svc.e3b0c442.dev"
+  dnsNames:
+    - "svc.e3b0c442.dev"
+    - "*.svc.e3b0c442.dev"
