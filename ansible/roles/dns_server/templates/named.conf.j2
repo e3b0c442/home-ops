@@ -116,6 +116,17 @@ zone "cluster.e3b0c442.dev" {
     allow-transfer { none; };
 };
 
+zone "svc.e3b0c442.dev" {
+    type master;
+    file "svc.e3b0c442.dev.zone";
+    allow-query {
+        192.168.227.0/16;
+        10.1.0.0/16;
+        10.42.0.0/16;
+    };
+    allow-transfer { none; };
+};
+
 zone "1.168.192.in-addr.arpa" {
     type master;
     file "1.168.192.in-addr.arpa.zone";

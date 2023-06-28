@@ -1,0 +1,11 @@
+@   IN  SOA svc1.net.ourparadisefalls.com. hostmaster.ourparadisefalls.com. (
+			    10000      ; serial
+				60         ; refresh (1 minute)
+				300        ; retry (5 minutes)
+				3600       ; expire (1 hour)
+				60         ; minimum (1 minute)
+				)
+           IN NS svc1.net.ourparadisefalls.com.
+
+traefik         IN A  10.227.176.2
+longhorn        CNAME traefik
