@@ -9,12 +9,13 @@ spec:
   chart:
     spec:
       chart: cert-manager
-      version: v1.12.0
+      version: v1.12.2
       sourceRef:
         kind: HelmRepository
         name: jetstack
         namespace: flux-system
   values:
+    installCRDs: true
     extraArgs:
       - "--dns01-recursive-nameservers-only"
       - "--dns01-recursive-nameservers=1.1.1.1:53,1.0.0.1:53"

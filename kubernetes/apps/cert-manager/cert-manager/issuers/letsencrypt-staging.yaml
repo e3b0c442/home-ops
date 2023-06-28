@@ -1,0 +1,23 @@
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-staging
+  namespace: default
+spec:
+  acme:
+    email: nick@e3b0c442.dev
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: letsencrypt-staging
+    solvers:
+      - selector:
+          dnsZones:
+            - "e3b0c442.dev"
+            - "ourparadisefalls.com"
+        dns01:
+          cloudflare:
+            email: nick@e3b0c442.dev
+            apiTokenSecretRef:
+              name: cf-api-token
+              key: token
