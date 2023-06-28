@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kubevip
+  namespace: kube-system
+  labels:
+    kustomize.toolkit.fluxcd.io/prune: disabled
+
+data:
+  range-global: 10.227.176.2-10.227.176.195,10.227.176.197-10.227.176.253
