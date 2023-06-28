@@ -2,15 +2,12 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: weave-gitops
+  name: op-connect
   namespace: flux-system
 spec:
-  path: ./kubernetes/apps/flux-system/weave-gitops/app
+  interval: 10m0s
+  path: ./flux/cert-manager/cert-manager
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
-  wait: false # no flux ks dependents
-  interval: 30m
-  retryInterval: 1m
-  timeout: 5m
