@@ -3,6 +3,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: cloudflared
+  namespace: kube-system
 data:
   config.yaml: |
     tunnel: e3b0c442-dev-k8s
