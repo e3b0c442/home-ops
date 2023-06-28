@@ -1,0 +1,7 @@
+apiVersion: onepassword.com/v1
+kind: OnePasswordItem
+metadata:
+  name: stackgres-authentication
+  namespace: flux-system
+spec:
+  itemPath: "vaults/home-lab/items/stackgres-authentication"

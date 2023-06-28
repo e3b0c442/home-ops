@@ -5,4 +5,5 @@ resources:
   - ./jetstack.yaml
   - ./longhorn.yaml
   - ./op-connect.yaml
+  - ./stackgres.yaml
   - ./weaveworks.yaml

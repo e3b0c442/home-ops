@@ -1,0 +1,15 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: stackgres-operator
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: longhorn
+  path: ./kubernetes/apps/stackgres/stackgres-operator/app
+  prune: false
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  interval: 5m
