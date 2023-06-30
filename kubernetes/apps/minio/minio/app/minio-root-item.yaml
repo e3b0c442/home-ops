@@ -1,0 +1,7 @@
+apiVersion: onepassword.com/v1
+kind: OnePasswordItem
+metadata:
+  name: minio-root
+  namespace: flux-system
+spec:
+  itemPath: "vaults/home-lab/items/minio-root"

@@ -1,0 +1,16 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: s3-e3b0c442-dev
+  namespace: mino
+spec:
+  secretName: s3-e3b0c442-dev-tls
+  privateKey:
+    rotationPolicy: Always
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: "s3.e3b0c442.dev"
+  dnsNames:
+    - "s3.e3b0c442.dev"

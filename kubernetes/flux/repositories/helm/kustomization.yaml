@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ./jetstack.yaml
   - ./longhorn.yaml
+  - ./minio.yaml
   - ./op-connect.yaml
   - ./stackgres.yaml
   - ./weaveworks.yaml

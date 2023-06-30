@@ -1,0 +1,11 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - s3-e3b0c442-dev-certificate.yaml
+  - minio-svc-e3b0c442-dev-certificate.yaml
+  - minio-root-item.yaml
+  - pv.yaml
+  - pvc.yaml
+  - helmrelease.yaml
+
