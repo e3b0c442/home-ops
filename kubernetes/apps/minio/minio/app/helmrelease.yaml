@@ -27,12 +27,6 @@ spec:
     replicas: 1
     persistence:
       existingClaim: minio
-    ingress:
-      enabled: true
-      annotations:
-        kubernetes.io/ingress.class: traefik
-      hosts:
-        - s3.e3b0c442.dev
     consoleIngress:
       enabled: true
       annotations:
