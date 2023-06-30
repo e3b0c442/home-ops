@@ -3,7 +3,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: s3-e3b0c442-dev
-  namespace: mino
+  namespace: minio
 spec:
   secretName: s3-e3b0c442-dev-tls
   privateKey:
