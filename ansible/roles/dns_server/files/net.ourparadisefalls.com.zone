@@ -8,6 +8,7 @@
            IN NS svc1.net.ourparadisefalls.com.
 
 svc1 IN A 192.168.1.1
+nas1 IN A 192.168.1.2
 
 psw1 IN A 192.168.129
 

@@ -27,7 +27,7 @@ spec:
             path: /ready
             port: 2000
           failureThreshold: 1
-          initialDelaySeconds: 10
+          initialDelaySeconds: 60
           periodSeconds: 10
         volumeMounts:
         - name: config
