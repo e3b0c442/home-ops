@@ -8,7 +8,7 @@ spec:
   dependsOn:
     - name: longhorn
   path: ./kubernetes/apps/stackgres/stackgres-operator/app
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system

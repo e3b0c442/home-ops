@@ -7,6 +7,7 @@ metadata:
 data:
   config.yaml: |
     tunnel: e3b0c442-dev-k8s
+    metrics: 0.0.0.0:2000
     credentials-file: /etc/cloudflared/creds/credentials.json
     no-autoupdate: true
     ingress:

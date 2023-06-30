@@ -7,4 +7,3 @@ metadata:
 spec:
   interval: 1h0m0s
   url: https://stackgres.io/downloads/stackgres-k8s/stackgres/helm/
-  timeout: 2m
