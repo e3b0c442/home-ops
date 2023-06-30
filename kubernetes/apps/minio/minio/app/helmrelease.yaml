@@ -33,10 +33,6 @@ spec:
         kubernetes.io/ingress.class: traefik
       hosts:
         - s3.e3b0c442.dev
-      tls:
-        - hosts:
-            - s3.e3b0c442.dev
-          secretName: s3-e3b0c442-dev-tls
     consoleIngress:
       enabled: true
       annotations:
