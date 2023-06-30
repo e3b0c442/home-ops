@@ -11,5 +11,5 @@ data:
     no-autoupdate: true
     ingress:
     - hostname: "*.e3b0c442.dev"
-      service: https://traefik:443
+      service: http://traefik:80
     - service: http_status:404
