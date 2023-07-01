@@ -23,7 +23,7 @@ spec:
         secretRef: docker-registry-s3
     s3:
       region: us-east-1
-      regionEndpoint: minio:9000
+      regionEndpoint: minio.minio:9000
       bucket: docker-registry
       rootdirectory: /
       encrypt: false
