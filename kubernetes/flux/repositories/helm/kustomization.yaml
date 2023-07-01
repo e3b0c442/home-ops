@@ -7,4 +7,5 @@ resources:
   - ./minio.yaml
   - ./op-connect.yaml
   - ./stackgres.yaml
+  - ./twuni.yaml
   - ./weaveworks.yaml

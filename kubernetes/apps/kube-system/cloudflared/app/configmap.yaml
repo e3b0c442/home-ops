@@ -11,6 +11,8 @@ data:
     credentials-file: /etc/cloudflared/creds/credentials.json
     no-autoupdate: true
     ingress:
-    - hostname: "*.e3b0c442.dev"
-      service: http://traefik:80
+    - hostname: "registry.e3b0c442.dev"
+      service: http://docker-registry.docker-registry:5000
+    - hostname: "s3.e3b0c442.dev"
+      service: http://minio.minio:9000
     - service: http_status:404

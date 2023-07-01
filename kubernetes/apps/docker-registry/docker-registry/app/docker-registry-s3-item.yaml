@@ -1,0 +1,8 @@
+---
+apiVersion: onepassword.com/v1
+kind: OnePasswordItem
+metadata:
+  name: docker-registry-s3
+  namespace: docker-registry
+spec:
+  itemPath: "vaults/home-lab/items/docker-registry-s3"
