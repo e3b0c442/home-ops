@@ -7,8 +7,8 @@ metadata:
 spec:
   interval: 5m
   dependsOn:
-    - minio
-    - op-connect
+    - name: minio
+    - name: op-connect
   path: ./kubernetes/apps/docker-registry/docker-registry/app
   prune: true
   sourceRef:
