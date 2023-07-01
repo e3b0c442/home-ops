@@ -7,6 +7,7 @@ metadata:
     app: stackgres-restapi
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt
+spec:
   ingressClassName: traefik
   rules:
     - host: stackgres.svc.e3b0c442.dev
