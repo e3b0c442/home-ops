@@ -17,6 +17,9 @@ spec:
   values:
     image:
       tag: "2.8.2"
+    configData:
+      log:
+        level: debug
     storage: s3
     secrets:
       s3:
