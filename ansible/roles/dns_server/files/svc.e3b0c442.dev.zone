@@ -11,3 +11,6 @@ traefik         IN A  10.227.176.2
 longhorn        CNAME traefik
 stackgres       CNAME traefik
 minio			CNAME traefik
+prometheus		CNAME traefik
+alertmanager	CNAME traefik
+grafana			CNAME traefik

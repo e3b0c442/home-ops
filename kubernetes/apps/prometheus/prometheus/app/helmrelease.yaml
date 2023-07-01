@@ -33,6 +33,7 @@ spec:
         tls:
           - hosts:
               - alertmanager.svc.e3b0c442.dev
+            secretName: alertmanager-svc-e3b0c442-dev-tls
     grafana:
       ingress:
         enabled: true
@@ -47,7 +48,7 @@ spec:
         tls:
           - hosts:
               - grafana.svc.e3b0c442.dev
-
+            secretName: grafana-svc-e3b0c442-dev-tls
     prometheus:
       ingress:
         enabled: true
@@ -62,3 +63,4 @@ spec:
         tls:
           - hosts:
               - prometheus.svc.e3b0c442.dev
+            secretName: prometheus-svc-e3b0c442-dev-tls
