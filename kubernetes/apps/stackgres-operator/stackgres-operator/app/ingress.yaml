@@ -19,7 +19,7 @@ spec:
               service:
                 name: stackgres-restapi
                 port:
-                  number: 443
+                  number: 80
   tls:
     - hosts:
         - stackgres.svc.e3b0c442.dev
