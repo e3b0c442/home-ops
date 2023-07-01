@@ -7,6 +7,7 @@ resources:
   - ./longhorn.yaml
   - ./minio.yaml
   - ./op-connect.yaml
+  - ./prometheus-community.yaml
   - ./stackgres.yaml
   - ./twuni.yaml
   - ./weaveworks.yaml
