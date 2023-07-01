@@ -1,12 +1,13 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  namespace: stackgres
+  namespace: stackgres-operator
   name: stackgres-operator
   labels:
     app: stackgres-restapi
-spec:
-  ingressClassName: nginx
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+  ingressClassName: traefik
   rules:
     - host: stackgres.svc.e3b0c442.dev
       http:
@@ -20,6 +21,6 @@ spec:
                   number: 443
   tls:
     - hosts:
-        - stackgres.ourparadisefalls.com
+        - stackgres.svc.e3b0c442.dev
       secretName: stackgres-svc-e3b0c442-dev-tls
   

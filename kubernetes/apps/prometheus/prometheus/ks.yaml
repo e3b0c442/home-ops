@@ -2,14 +2,12 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: stackgres-operator
+  name: prometheus
   namespace: flux-system
 spec:
-  dependsOn:
-    - name: longhorn
-  path: ./kubernetes/apps/stackgres/stackgres-operator/app
+  interval: 10m0s
+  path: ./kubernetes/apps/prometheus/prometheus/app
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
-  interval: 5m

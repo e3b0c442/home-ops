@@ -1,7 +1,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  namespace: stackgres
+  namespace: stackgres-operator
   name: stackgres-operator
 spec:
   interval: 5m
@@ -16,7 +16,7 @@ spec:
   values:
     grafana:
       autoEmbed: true
-      webHost: prometheus-grafana.monitoring
+      webHost: prometheus-grafana.prometheus
     authentication:
       secretRef:
         name: stackgres-authentication

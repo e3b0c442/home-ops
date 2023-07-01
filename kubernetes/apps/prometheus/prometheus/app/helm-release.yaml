@@ -1,0 +1,64 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  namespace: prometheus
+  name: prometheus
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: kube-prometheus-stack
+      version: "47.1.0"
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community
+        namespace: flux-system
+  install:
+    crds: CreateReplace
+  upgrade:
+    crds: CreateReplace
+  values:
+    alertmanager:
+      ingress:
+        enabled: true
+        ingressClassName: traefik
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt
+        hosts:
+          - alertmanager.svc.e3b0c442.dev
+        paths:
+          - /
+        pathType: Prefix
+        tls:
+          - hosts:
+              - alertmanager.svc.e3b0c442.dev
+    grafana:
+      ingress:
+        enabled: true
+        ingressClassName: traefik
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt
+        hosts:
+          - grafana.svc.e3b0c442.dev
+        paths:
+          - /
+        pathType: Prefix
+        tls:
+          - hosts:
+              - grafana.svc.e3b0c442.dev
+
+    prometheus:
+      ingress:
+        enabled: true
+        ingressClassName: traefik
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt
+        hosts:
+          - prometheus.svc.e3b0c442.dev
+        paths:
+          - /
+        pathType: Prefix
+        tls:
+          - hosts:
+              - prometheus.svc.e3b0c442.dev
