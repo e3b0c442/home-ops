@@ -6,4 +6,6 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1h0m0s
-  url: https://stackgres.io/downloads/stackgres-k8s/stackgres/helm/
+  type: oci
+  url: oci://registry.e3b0c442.dev/charts
+#  url: https://stackgres.io/downloads/stackgres-k8s/stackgres/helm/
