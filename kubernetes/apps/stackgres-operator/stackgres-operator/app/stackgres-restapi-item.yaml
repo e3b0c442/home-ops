@@ -1,7 +1,0 @@
-apiVersion: onepassword.com/v1
-kind: OnePasswordItem
-metadata:
-  name: stackgres-restapi
-  namespace: stackgres-operator
-spec:
-  itemPath: "vaults/home-lab/items/stackgres-restapi"

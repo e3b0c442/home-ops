@@ -1,0 +1,45 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+    namespace: stackgres-operator
+    name: stackgres-operator
+spec:
+    interval: 5m
+    chart:
+        spec:
+            chart: stackgres-operator
+            version: 1.4.3
+            sourceRef:
+                kind: HelmRepository
+                name: stackgres
+                namespace: flux-system
+    values:
+        adminui:
+            service:
+                exposeHTTP: true
+        grafana:
+            autoEmbed: true
+            webHost: prometheus-grafana.prometheus
+        authentication:
+            user: e3b0c442
+            password: ENC[AES256_GCM,data:whV6EFhMn0IIaOCb7eGuJzKskWOPui81PhHO+V9l9MpLx8tINxxhnhOwkew=,iv:IxPfXpv1Y+N71HWuO7+rJHNCr7xrZUP1X8xYDXH2N5Q=,tag:SuY6aeh9yA7EIMNAoAlklA==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1az4crvx6qx93qfsp3jtyzzalklutgq3w4zunyal0q407t49yassqar7cxf
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBqaDJodXlnSUo1VnBTZVpx
+            eGlRK3hRak1LVEdFd3FEU2dHWXhLc25CMEJRCi9UdGRnVXZHRmxEQkh2MzEveXU4
+            OTkrMFBnSmxDNEhmeDhkV3pBM2pRVDgKLS0tIGd4UHNobVBnQ2IwWTFTam1CVTZ0
+            bnFDbitEOUZ3Ymd3MS9PN0o3OVRESzAKHMZfCGwz6bckGydReow6RuNJ3rPwTz7t
+            1pS5uwurJ9hl8P80op0R8m0X7XoPEAwHgiLS18C+Vm35+xq1INr2uw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2023-07-02T01:46:13Z"
+    mac: ENC[AES256_GCM,data:olauD0qn7sLxtjNzb0/rCazx5/kr5LUjnjySSXxvw2eGI0rb+Y418nn9qFGJhy5zOrQhDLFO2vRuz3rOABW1NEaAbsZqaqnbOT8V0B+sG2bDL/2ntFe2rWMTGHy8D4Y9p31uDeuN1vgZjdv1ySkXEVHaKJJrQ2rVSqyCD88/O8k=,iv:nuAjsFodQteaGc2G2Yqnxw4v6a2ImGgBhRITTo8zt+E=,tag:dGv3O78ZKJuwLIJwQSjnRw==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData|password)$
+    version: 3.7.3
