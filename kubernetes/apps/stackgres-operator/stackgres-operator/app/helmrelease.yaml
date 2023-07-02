@@ -21,5 +21,6 @@ spec:
       autoEmbed: true
       webHost: prometheus-grafana.prometheus
     authentication:
+      user: e3b0c442
       secretRef:
         name: stackgres-restapi
