@@ -22,4 +22,4 @@ spec:
       webHost: prometheus-grafana.prometheus
     authentication:
       secretRef:
-        name: stackgres-authentication
+        name: stackgres-restapi

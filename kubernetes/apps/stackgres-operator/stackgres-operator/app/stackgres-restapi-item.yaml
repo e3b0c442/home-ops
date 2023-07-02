@@ -1,7 +1,7 @@
 apiVersion: onepassword.com/v1
 kind: OnePasswordItem
 metadata:
-  name: stackgres-authentication
+  name: stackgres-restapi
   namespace: stackgres-operator
 spec:
-  itemPath: "vaults/home-lab/items/stackgres-authentication"
+  itemPath: "vaults/home-lab/items/stackgres-restapi"
