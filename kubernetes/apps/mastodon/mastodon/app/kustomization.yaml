@@ -7,5 +7,6 @@ resources:
   - sgpoolingconfig.yaml
   - sgobjectstorage.yaml
   - sgscript.yaml
+  - sgcluster.yaml
   - redisfailover.yaml
   
