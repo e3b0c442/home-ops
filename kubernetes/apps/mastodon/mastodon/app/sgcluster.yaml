@@ -1,0 +1,42 @@
+apiVersion: stackgres.io/v1
+kind: SGCluster
+metadata:
+  name: postgres-mastodon
+  namespace: mastodon
+spec:
+  configurations:
+    backups:
+    - compression: lzma
+      cronSchedule: 0 5 * * *
+      path: ""
+      performance:
+        uploadDiskConcurrency: 1
+      retention: 5
+      sgObjectStorage: postgres-mastodon-objectstorage
+    sgPoolingConfig: postgres-mastodon-poolingconfig
+    sgPostgresConfig: postgres-mastodon-postgresconfig
+  instances: 2
+  managedSql:
+    scripts:
+    - id: 0
+      sgScript: postgres-mastodon-script
+  pods:
+    persistentVolume:
+      size: 10Gi
+      storageClass: longhorn
+  postgres:
+    flavor: vanilla
+    version: "15.1"
+  postgresServices:
+    primary:
+      enabled: true
+      type: ClusterIP
+    replicas:
+      enabled: true
+      type: ClusterIP
+  prometheusAutobind: true
+  replication:
+    mode: async
+    role: ha-read
+  sgInstanceProfile: postgres-mastodon-instanceprofile
+  toInstallPostgresExtensions: []
