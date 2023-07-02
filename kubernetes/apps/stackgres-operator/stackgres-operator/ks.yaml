@@ -13,3 +13,7 @@ spec:
     kind: GitRepository
     name: flux-system
   interval: 5m
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
