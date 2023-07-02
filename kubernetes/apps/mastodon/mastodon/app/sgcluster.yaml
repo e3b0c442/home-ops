@@ -24,6 +24,9 @@ spec:
     persistentVolume:
       size: 10Gi
       storageClass: longhorn
+    scheduling:
+      nodeSelector:
+        kubernetes.io/arch: amd64
   postgres:
     flavor: vanilla
     version: "15.1"
