@@ -17,6 +17,8 @@ spec:
         adminui:
             service:
                 exposeHTTP: true
+        cert:
+            resetCerts: true
         grafana:
             autoEmbed: true
             webHost: prometheus-grafana.prometheus
@@ -38,8 +40,8 @@ sops:
             bnFDbitEOUZ3Ymd3MS9PN0o3OVRESzAKHMZfCGwz6bckGydReow6RuNJ3rPwTz7t
             1pS5uwurJ9hl8P80op0R8m0X7XoPEAwHgiLS18C+Vm35+xq1INr2uw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2023-07-02T01:46:13Z"
-    mac: ENC[AES256_GCM,data:olauD0qn7sLxtjNzb0/rCazx5/kr5LUjnjySSXxvw2eGI0rb+Y418nn9qFGJhy5zOrQhDLFO2vRuz3rOABW1NEaAbsZqaqnbOT8V0B+sG2bDL/2ntFe2rWMTGHy8D4Y9p31uDeuN1vgZjdv1ySkXEVHaKJJrQ2rVSqyCD88/O8k=,iv:nuAjsFodQteaGc2G2Yqnxw4v6a2ImGgBhRITTo8zt+E=,tag:dGv3O78ZKJuwLIJwQSjnRw==,type:str]
+    lastmodified: "2023-07-02T04:07:33Z"
+    mac: ENC[AES256_GCM,data:MmG+o4CoY7rGVpx+A0s8yZIG5e7kx8hvAt6jhIwonr3iRxfVJhBSRi7uzM/hTQoPePGQO8UA8fzGlFfjPXSv8D7GmvrJIVU94cIZaoxvLBvoBDlpZ854ADxr6jSs7qcWR++56FThZuFbmQzcwM0884BhUG+KXHwxF7mf4m38QoE=,iv:qvBVZzxIWxCO/n0Cl7EllefTFmG2brZdlOAiUBImYLM=,tag:7lUenkxP4zrlfGwjj+WxNA==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData|password)$
     version: 3.7.3
