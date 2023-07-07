@@ -6,17 +6,12 @@ metadata:
   name: flux-system
   namespace: flux-system
 spec:
-  interval: 1m
+  interval: 1m0s
   ref:
     branch: main
   secretRef:
     name: flux-system
   url: ssh://git@github.com/e3b0c442/home-ops
-  ignore: |
-    # exclude all
-    /*
-    # include kubernetes directory
-    !/kubernetes
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -24,19 +19,9 @@ metadata:
   name: flux-system
   namespace: flux-system
 spec:
-  interval: 5m
+  interval: 10m0s
   path: ./kubernetes/flux
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
-  patches:
-    - patch: |
-        $patch: delete
-        apiVersion: networking.k8s.io/v1
-        kind: NetworkPolicy
-        metadata:
-          name: not-used
-      target:
-        group: networking.k8s.io
-        kind: NetworkPolicy
