@@ -8,7 +8,7 @@ spec:
     chart:
         spec:
             chart: stackgres-operator
-            version: 1.4.3
+            version: 1.5.0
             sourceRef:
                 kind: HelmRepository
                 name: stackgres
@@ -40,8 +40,8 @@ sops:
             bnFDbitEOUZ3Ymd3MS9PN0o3OVRESzAKHMZfCGwz6bckGydReow6RuNJ3rPwTz7t
             1pS5uwurJ9hl8P80op0R8m0X7XoPEAwHgiLS18C+Vm35+xq1INr2uw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2023-07-02T04:07:33Z"
-    mac: ENC[AES256_GCM,data:MmG+o4CoY7rGVpx+A0s8yZIG5e7kx8hvAt6jhIwonr3iRxfVJhBSRi7uzM/hTQoPePGQO8UA8fzGlFfjPXSv8D7GmvrJIVU94cIZaoxvLBvoBDlpZ854ADxr6jSs7qcWR++56FThZuFbmQzcwM0884BhUG+KXHwxF7mf4m38QoE=,iv:qvBVZzxIWxCO/n0Cl7EllefTFmG2brZdlOAiUBImYLM=,tag:7lUenkxP4zrlfGwjj+WxNA==,type:str]
+    lastmodified: "2023-07-07T02:45:54Z"
+    mac: ENC[AES256_GCM,data:6kmKbr0bWlOszyR9KIJOG2w+P64xOo5tEvIZ3yVhG/QL93QDihRxsqzxlhaHx0j+3tPaR6vFBn3jJAYezJcaZLrjXOhzZGbcQRgZtr+pJgddUZb/WTIP8/gK13VCQIkj7G2OdnFzLaE0GeFJRtv5kNpIbDrtC87ToXHIBFckgPk=,iv:MVFOpPux0pUH2jFwue9xoJtKA9n3xA0M6SpL3EYo7DQ=,tag:YKjhQWEgg1Z3pXfjhdBC7w==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData|password)$
     version: 3.7.3

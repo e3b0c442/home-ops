@@ -1,0 +1,7 @@
+apiVersion: onepassword.com/v1
+kind: OnePasswordItem
+metadata:
+  name: mastodon-s3
+  namespace: mastodon
+spec:
+  itemPath: "vaults/home-lab/items/mastodon-s3"
