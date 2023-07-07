@@ -6,8 +6,4 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1h0m0s
-  type: oci
-  url: oci://registry.e3b0c442.dev/charts
-  secretRef:
-    name: registry-e3b0c442-dev-credentials
-#  url: https://stackgres.io/downloads/stackgres-k8s/stackgres/helm/
+  url: https://stackgres.io/downloads/stackgres-k8s/stackgres/helm/
