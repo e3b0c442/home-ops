@@ -7,7 +7,7 @@ metadata:
 spec:
   dependsOn:
     - name: longhorn
-  path: ./kubernetes/apps/stackgres-operator/stackgres-operator/app
+  path: ./kubernetes/apps/stackgres/stackgres-operator/app
   prune: true
   sourceRef:
     kind: GitRepository

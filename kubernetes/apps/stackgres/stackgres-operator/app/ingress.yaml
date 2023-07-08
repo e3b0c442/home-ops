@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  namespace: stackgres-operator
+  namespace: stackgres
   name: stackgres-operator
   labels:
     app: stackgres-restapi
