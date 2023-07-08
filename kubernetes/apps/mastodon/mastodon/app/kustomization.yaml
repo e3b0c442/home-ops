@@ -3,11 +3,5 @@ kind: Kustomization
 resources:
   - cloudflare-r2-item.yaml
   - mastodon-s3-item.yaml
-  - sginstanceprofile.yaml
-  - sgpostgresconfig.yaml
-  - sgpoolingconfig.yaml
-  - sgobjectstorage.yaml
-  - sgscript.yaml
-  - sgcluster.yaml
   - redisfailover.yaml
   

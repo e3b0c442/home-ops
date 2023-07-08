@@ -10,6 +10,5 @@ resources:
   - ./percona.yaml
   - ./prometheus-community.yaml
   - ./redis-operator.yaml
-  - ./stackgres.yaml
   - ./twuni.yaml
   - ./weaveworks.yaml
