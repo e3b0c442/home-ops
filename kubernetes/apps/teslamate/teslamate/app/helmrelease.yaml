@@ -51,20 +51,6 @@ spec:
         ports:
           http:
             port: 4000
-    ingress:
-      main:
-        enabled: true
-        annotations:
-          cert-manager.io/cluster-issuer: letsencrypt
-        ingressClassName: traefik
-        hosts:
-          - host: teslamate.svc.e3b0c442.dev
-            paths:
-              - path: /
-        tls:
-          - hosts:
-              - teslamate.svc.e3b0c442.dev
-            secretName: teslamate-svc-e3b0c442-dev-tls
     persistence:
       pg-cert:
         enabled: true
