@@ -58,6 +58,8 @@ spec:
         ingressClassName: traefik
         hosts:
           - host: teslamate.svc.e3b0c442.dev
+            paths:
+              - /
         tls:
           - hosts:
               - teslamate.svc.e3b0c442.dev
