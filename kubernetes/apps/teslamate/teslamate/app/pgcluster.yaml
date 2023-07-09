@@ -54,3 +54,4 @@ spec:
                 - amd64
   pmm:
     enabled: false
+    image: percona/pmm-client:2.37.0
