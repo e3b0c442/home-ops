@@ -45,8 +45,7 @@ spec:
             name: teslamate-db-pguser-teslamate
             key: dbname
       DISABLE_MQTT: "true"
-      DATABASE_SSL: "true"
-      DATABASE_SSL_CA_CERT_FILE: /pg-cert/ca.crt
+      DATABASE_SSL: "noverify"
     service:
       main:
         ports:
