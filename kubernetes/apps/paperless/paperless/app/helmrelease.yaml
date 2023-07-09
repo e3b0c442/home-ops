@@ -20,7 +20,7 @@ spec:
       tag: "1.16.5"
     env:
       COMPOSE_PROJECT_NAME: paperless
-      PAPERLESS_REDIS: redis://rfs-paperless-redis:26379
+      PAPERLESS_REDIS: sentinel://rfs-paperless-redis:26379
       PAPERLESS_OCR_LANGUAGE: eng
       PAPERLESS_DBHOST:
         valueFrom:
