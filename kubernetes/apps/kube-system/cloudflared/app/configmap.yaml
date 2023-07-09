@@ -24,12 +24,6 @@ data:
             - aud1 0b063ad0cd73744edfeb995f38b9b3416428a8df6bfdb14abed408b5233003aa
     - hostname: "teslamate.e3b0c442.dev"
       service: http://teslamate.teslamate:4000
-      originRequest:
-        access:
-          required: true
-          teamName: e3b0c442
-          audTag:
-            - aud1 0b063ad0cd73744edfeb995f38b9b3416428a8df6bfdb14abed408b5233003aa
     - hostname: "s3.e3b0c442.dev"
       service: http://minio.minio:9000
     - hostname: "tesla"
