@@ -28,7 +28,7 @@ spec:
         valueFrom:
           secretKeyRef:
             name: teslamate-db-pguser-teslamate
-            key: pgbouncer-host
+            key: host
       DATABASE_USER:
         valueFrom:
           secretKeyRef:
@@ -46,7 +46,7 @@ spec:
             key: dbname
       DISABLE_MQTT: "true"
       DATABASE_SSL: "noverify"
-      DATABASE_SSL_CA_CERT_FILE: /pg-cert/pgbouncer-frontend.ca-roots
+      DATABASE_SSL_CA_CERT_FILE: /pg-cert/ca.crt
     service:
       main:
         ports:
@@ -68,5 +68,5 @@ spec:
       pg-cert:
         enabled: true
         type: secret
-        name: teslamate-db-pgbouncer
+        name: teslamate-db-cluster-cert
 
