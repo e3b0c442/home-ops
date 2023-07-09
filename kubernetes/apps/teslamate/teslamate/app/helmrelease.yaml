@@ -46,6 +46,7 @@ spec:
             key: dbname
       DISABLE_MQTT: "true"
       DATABASE_SSL: "true"
+      DATABASE_SSL_CA_CERT_FILE: /pg-cert/root.crt
     service:
       main:
         ports:
@@ -61,3 +62,8 @@ spec:
           - hosts:
               - teslamate.svc.e3b0c442.dev
             secretName: teslamate-svc-e3b0c442-dev-tls
+    persistence:
+      pg-cert:
+        enabled: true
+        type: secret
+
