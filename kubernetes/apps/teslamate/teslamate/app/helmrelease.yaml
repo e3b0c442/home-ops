@@ -45,7 +45,7 @@ spec:
             name: teslamate-db-pguser-teslamate
             key: dbname
       DISABLE_MQTT: "true"
-      DATABASE_SSL: "noverify"
+      DATABASE_SSL: "true"
       DATABASE_SSL_CA_CERT_FILE: /pg-cert/ca.crt
     service:
       main:
@@ -55,6 +55,8 @@ spec:
     ingress:
       main:
         enabled: true
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt
         ingressClassName: traefik
         hosts:
           - host: teslamate.svc.e3b0c442.dev
