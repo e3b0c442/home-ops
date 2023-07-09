@@ -13,6 +13,8 @@ data:
     ingress:
     - hostname: "registry.e3b0c442.dev"
       service: http://docker-registry.docker-registry:5000
+    - hostname: "paperless.e3b0c442.dev"
+      service: http://paperless.paperless:8000
     - hostname: "teslamate.e3b0c442.dev"
       service: http://teslamate-grafana.teslamate:3000
       path: /grafana

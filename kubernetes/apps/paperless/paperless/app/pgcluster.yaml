@@ -1,0 +1,87 @@
+---
+apiVersion: pgv2.percona.com/v2
+kind: PerconaPGCluster
+metadata:
+  namespace: paperless
+  name: paperless-db
+spec:
+  crVersion: "2.2.0"
+  postgresVersion: 15
+  users:
+    - name: paperless
+      databases:
+        - paperless
+  image: percona/percona-postgresql-operator:2.2.0-ppg15-postgres
+  imagePullPolicy: Always
+  instances: 
+    - name: db1
+      replicas: 2
+      dataVolumeClaimSpec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 16Gi
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/arch
+                operator: In
+                values:
+                - amd64
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: postgres-operator.crunchydata.com/cluster
+                operator: In
+                values:
+                - paperless-db
+              - key: postgres-operator.crunchydata.com/instance-set
+                operator: In
+                values:
+                - db1
+            topologyKey: kubernetes.io/hostname
+  backups:
+    pgbackrest:
+      image: percona/percona-postgresql-operator:2.2.0-ppg15-pgbackrest
+      configuration:
+        - secret: 
+            name: pgbackrest-cloudflare-r2
+      repos: 
+        - name: repo1
+          s3:
+            bucket: paperless-db-backups
+            endpoint: https://4871a91f82eb093a25cddb6b1b760ccf.r2.cloudflarestorage.com
+            region: auto
+  proxy:
+    pgBouncer:
+      replicas: 2
+      image: percona/percona-postgresql-operator:2.2.0-ppg15-pgbouncer
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/arch
+                operator: In
+                values:
+                - amd64
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: postgres-operator.crunchydata.com/cluster
+                operator: In
+                values:
+                - paperless-db
+              - key: postgres-operator.crunchydata.com/role
+                operator: In
+                values:
+                - pgbouncer
+            topologyKey: kubernetes.io/hostname
+  pmm:
+    enabled: false
+    image: percona/pmm-client:2.37.0

@@ -1,0 +1,22 @@
+apiVersion: databases.spotahome.com/v1
+kind: RedisFailover
+metadata:
+  name: paperless-redis
+  namespace: paperless
+spec:
+  sentinel:
+    replicas: 3
+  redis:
+    replicas: 3
+    storage:
+      persistentVolumeClaim:
+        metadata:
+          name: paperless-redis-data
+        spec:
+          accessModes:
+          - ReadWriteOnce
+          resources:
+            requests:
+              storage: 1Gi
+          storageClassName: longhorn
+          
