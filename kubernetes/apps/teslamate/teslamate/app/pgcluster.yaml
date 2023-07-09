@@ -15,7 +15,7 @@ spec:
   imagePullPolicy: Always
   instances: 
     - name: db1
-      replicas: 3
+      replicas: 2
       dataVolumeClaimSpec:
         accessModes:
         - ReadWriteOnce
@@ -45,7 +45,7 @@ spec:
             region: auto
   proxy:
     pgBouncer:
-      replicas: 3
+      replicas: 2
       image: percona/percona-postgresql-operator:2.2.0-ppg15-pgbouncer
       affinity:
         nodeAffinity:
