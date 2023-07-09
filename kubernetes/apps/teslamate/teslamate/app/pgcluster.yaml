@@ -11,6 +11,8 @@ spec:
     - name: teslamate
       databases:
         - teslamate
+  image: percona/percona-postgresql-operator:2.2.0-ppg15-postgres
+  imagePullPolicy: Always
   instances: 
     - name: db1
       replicas: 3
@@ -31,6 +33,7 @@ spec:
                 - amd64
   backups:
     pgbackrest:
+      image: percona/percona-postgresql-operator:2.2.0-ppg15-pgbackrest
       configuration:
         - secret: 
             name: pgbackrest-cloudflare-r2
@@ -43,6 +46,7 @@ spec:
   proxy:
     pgBouncer:
       replicas: 3
+      image: percona/percona-postgresql-operator:2.2.0-ppg15-pgbouncer
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
