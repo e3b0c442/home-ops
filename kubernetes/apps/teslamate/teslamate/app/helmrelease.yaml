@@ -66,4 +66,5 @@ spec:
       pg-cert:
         enabled: true
         type: secret
+        name: pgo-root-cacert
 
