@@ -12,20 +12,39 @@ spec:
       version: 1.5.1
       sourceRef:
         kind: HelmRepository
-        name: bjw-s-charts
+        name: bjw-s
         namespace: flux-system
   values:
     image:
       repository: ghcr.io/paperless-ngx/paperless-ngx
-      tag: "1.14.5"
+      tag: "1.16.5"
     env:
       COMPOSE_PROJECT_NAME: paperless
-      PAPERLESS_REDIS: redis://paperless-redis:6379
+      PAPERLESS_REDIS: redis://rfr-paperless-redis:6379
       PAPERLESS_OCR_LANGUAGE: eng
-      PAPERLESS_DBHOST: postgresql-primary
-      PAPERLESS_DBPASS: ${PAPERLESS_DBPASS}
+      PAPERLESS_DBHOST:
+        valueFrom:
+          secretKeyRef:
+            name: paperless-db-pguser-paperless
+            key: pgbouncer-host
+      PAPERLESS_DBNAME:
+        valueFrom:
+          secretKeyRef:
+            name: paperless-db-pguser-paperless
+            key: dbname
+      PAPERLESS_DBUSER:
+        valueFrom:
+          secretKeyRef:
+            name: paperless-db-pguser-paperless
+            key: user
+      PAPERLESS_DBPASS:
+        valueFrom:
+          secretKeyRef:
+            name: paperless-db-pguser-paperless
+            key: password
+      PAPERLESS_DBSSLMODE: require
       PAPERLESS_PORT: 8000
-      PAPERLESS_URL: https://paperless.ourparadisefalls.com
+      PAPERLESS_URL: https://paperless.e3b0c442.dev
       PAPERLESS_CONSUMER_POLLING: "60"
       USERMAP_GID: 100
     service:
@@ -33,19 +52,6 @@ spec:
         ports:
           http:
             port: 8000
-    ingress:
-      main:
-        enabled: true
-        annotations:
-          kubernetes.io/ingress.class: nginx
-        hosts:
-          - host: paperless.ourparadisefalls.com
-            paths:
-              - path: /
-                pathType: Prefix
-        tls:
-          - hosts:
-              - paperless.ourparadisefalls.com
     persistence:
       data:
         enabled: true
