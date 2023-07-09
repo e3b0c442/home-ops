@@ -3,5 +3,4 @@ kind: Kustomization
 resources:
   - pgbackrest-cloudflare-r2-item.yaml
   - pgcluster.yaml
-  - redisfailover.yaml
   - helmrelease.yaml

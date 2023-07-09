@@ -20,7 +20,7 @@ spec:
       tag: "1.16.5"
     env:
       COMPOSE_PROJECT_NAME: paperless
-      PAPERLESS_REDIS: sentinel://rfs-paperless-redis:26379
+      PAPERLESS_REDIS: redis://127.0.0.1:6379
       PAPERLESS_OCR_LANGUAGE: eng
       PAPERLESS_DBHOST:
         valueFrom:
@@ -52,6 +52,29 @@ spec:
         ports:
           http:
             port: 8000
+    sidecars:
+      redis:
+        name: redis
+        image: redis:alpine
+        command:
+          - "redis-server"
+          - "--appendonly"
+          - "yes"
+          - "--save"
+          - "60"
+          - "1"
+        ports:
+          - name: redis
+            containerPort: 6379
+        livenessProbe:
+          tcpSocket:
+            port: 6379
+        readinessProbe:
+          tcpSocket:
+            port: 6379
+        volumeMounts:
+          - name: redis
+            mountPath: /data
     persistence:
       data:
         enabled: true
@@ -85,3 +108,9 @@ spec:
           nfs:
             path: /volume1/k8s/paperless/export
             server: 192.168.1.2
+      redis:
+        enabled: true
+        type: pvc
+        accessMode: ReadWriteOnce
+        size: 1Gi
+        storageClass: longhorn
