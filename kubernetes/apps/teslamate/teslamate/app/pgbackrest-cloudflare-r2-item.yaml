@@ -1,7 +1,8 @@
+---
 apiVersion: onepassword.com/v1
 kind: OnePasswordItem
 metadata:
-  name: pgbackrest-cloudflare-r2
-  namespace: teslamate
+  name: registry-e3b0c442-dev-credentials
+  namespace: flux-system
 spec:
-  itemPath: "vaults/home-lab/items/pgbackrest-cloudflare-r2"
+  itemPath: vaults/home-lab/items/registry-e3b0c442-dev-credentials

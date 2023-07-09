@@ -15,7 +15,9 @@ spec:
     spec:
       containers:
         - name: teslamate-grafana
-          image: teslamate/grafana:edge
+          image: registry.e3b0c442.dev/teslamate/grafana:edge
+          imagePullSecrets:
+            - name: registry-e3b0c442-dev-credentials
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
