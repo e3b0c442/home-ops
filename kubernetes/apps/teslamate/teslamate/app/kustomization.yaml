@@ -3,4 +3,5 @@ kind: Kustomization
 resources:
   - pgbackrest-cloudflare-r2-item.yaml
   - pgcluster.yaml
-#  - helmrelease.yaml
+  - encryption-key-item.yaml
+  - helmrelease.yaml

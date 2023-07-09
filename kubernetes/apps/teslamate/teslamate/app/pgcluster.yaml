@@ -9,7 +9,7 @@ spec:
   postgresVersion: 15
   users:
     - name: teslamate
-      options: "SUPERUSER"
+      options: "NOSUPERUSER"
       databases:
         - teslamate
   image: percona/percona-postgresql-operator:2.2.0-ppg15-postgres
