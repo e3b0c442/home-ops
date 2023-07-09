@@ -46,7 +46,7 @@ spec:
             key: dbname
       DISABLE_MQTT: "true"
       DATABASE_SSL: "true"
-      DATABASE_SSL_CA_CERT_FILE: /pg-cert/root.crt
+      DATABASE_SSL_CA_CERT_FILE: /pg-cert/pgbouncer-frontend.ca-roots
     service:
       main:
         ports:
@@ -68,5 +68,5 @@ spec:
       pg-cert:
         enabled: true
         type: secret
-        name: pgo-root-cacert
+        name: teslamate-db-pgbouncer
 
