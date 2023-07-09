@@ -24,11 +24,11 @@ spec:
           secretKeyRef:
             name: teslamate-encryption-key
             key: key
-      DATABASE_HOST:
-        valueFrom:
-          secretKeyRef:
-            name: teslamate-db-pguser-teslamate
-            key: pgbouncer-host
+      DATABASE_HOST: teslamate-db-pgbouncer.teslamate.svc.cluster.local
+#        valueFrom:
+#          secretKeyRef:
+#            name: teslamate-db-pguser-teslamate
+#            key: pgbouncer-host
       DATABASE_USER:
         valueFrom:
           secretKeyRef:
