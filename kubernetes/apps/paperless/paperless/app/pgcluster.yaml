@@ -9,6 +9,7 @@ spec:
   postgresVersion: 15
   users:
     - name: paperless
+      options: "SUPERUSER"
       databases:
         - paperless
   image: percona/percona-postgresql-operator:2.2.0-ppg15-postgres
