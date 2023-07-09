@@ -1,0 +1,46 @@
+---
+apiVersion: pgv2.percona.com/v2
+kind: PerconaPGCluster
+metadata:
+  namespace: teslamate
+  name: teslamate-db
+spec:
+  crVersion: "2.2.0"
+  postgresVersion: 15
+  users:
+    - name: teslamate
+      databases:
+        - teslamate
+  instances: 
+    - name: db1
+      replicas: 3
+      dataVolumeClaimSpec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 16Gi
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/arch
+                operator: In
+                values:
+                - amd64
+  backups:
+    pgbackrest:
+      configuration:
+        - secret: 
+            name: pgbackrest-cloudflare-r2
+      repos: 
+        - name: repo1
+          s3:
+            bucket: teslamate-db-backups
+            endpoint: https://4871a91f82eb093a25cddb6b1b760ccf.r2.cloudflarestorage.com
+            region: auto
+
+
+
+
