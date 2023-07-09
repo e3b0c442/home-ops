@@ -16,8 +16,7 @@ spec:
   values:
     image:
       repository: teslamate/teslamate
-      tag: 1.27.3
-    command: ["sleep", "600"]
+      tag: edge
     env:
       TZ: UTC
       ENCRYPTION_KEY: 
