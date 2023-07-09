@@ -52,3 +52,5 @@ spec:
                 operator: In
                 values:
                 - amd64
+  pmm:
+    enabled: false
