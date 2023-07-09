@@ -40,15 +40,15 @@ spec:
             bucket: teslamate-db-backups
             endpoint: https://4871a91f82eb093a25cddb6b1b760ccf.r2.cloudflarestorage.com
             region: auto
-    proxy:
-      pgBouncer:
-        replicas: 3
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: kubernetes.io/arch
-                operator: In
-                values:
-                - amd64
+  proxy:
+    pgBouncer:
+      replicas: 3
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: kubernetes.io/arch
+              operator: In
+              values:
+              - amd64
