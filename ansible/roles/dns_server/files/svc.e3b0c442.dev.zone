@@ -14,3 +14,4 @@ minio			CNAME traefik
 prometheus		CNAME traefik
 alertmanager	CNAME traefik
 grafana			CNAME traefik
+teslamate		CNAME traefik
