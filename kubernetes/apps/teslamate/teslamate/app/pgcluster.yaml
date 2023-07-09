@@ -15,7 +15,7 @@ spec:
   imagePullPolicy: Always
   instances: 
     - name: db1
-      replicas: 1
+      replicas: 2
       dataVolumeClaimSpec:
         accessModes:
         - ReadWriteOnce
@@ -44,8 +44,6 @@ spec:
                 values:
                 - db1
             topologyKey: kubernetes.io/hostname
-            namespaceSelector: 
-              name: teslamate
   backups:
     pgbackrest:
       image: percona/percona-postgresql-operator:2.2.0-ppg15-pgbackrest
@@ -60,7 +58,7 @@ spec:
             region: auto
   proxy:
     pgBouncer:
-      replicas: 1
+      replicas: 2
       image: percona/percona-postgresql-operator:2.2.0-ppg15-pgbouncer
       affinity:
         nodeAffinity:
@@ -84,8 +82,6 @@ spec:
                 values:
                 - pgbouncer
             topologyKey: kubernetes.io/hostname
-            namespaceSelector: 
-              name: teslamate
   pmm:
     enabled: false
     image: percona/pmm-client:2.37.0
