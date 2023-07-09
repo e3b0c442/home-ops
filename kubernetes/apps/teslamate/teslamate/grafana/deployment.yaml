@@ -40,7 +40,7 @@ spec:
                 secretKeyRef:
                   name: teslamate-db-pguser-teslamate
                   key: host
-            - name: DATABASE_SSL_MODE
+            - name: GF_DATABASE_SSL_MODE
               value: "require"
             - name: GF_SERVER_DOMAIN
               value: teslamate.e3b0c442.dev
