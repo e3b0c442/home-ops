@@ -59,7 +59,7 @@ spec:
         hosts:
           - host: teslamate.svc.e3b0c442.dev
             paths:
-              - /
+              - path: /
         tls:
           - hosts:
               - teslamate.svc.e3b0c442.dev
