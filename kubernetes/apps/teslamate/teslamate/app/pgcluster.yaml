@@ -15,7 +15,7 @@ spec:
   imagePullPolicy: Always
   instances: 
     - name: db1
-      replicas: 2
+      replicas: 1
       dataVolumeClaimSpec:
         accessModes:
         - ReadWriteOnce
@@ -31,6 +31,21 @@ spec:
                 operator: In
                 values:
                 - amd64
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: postgres-operator.crunchydata.com/cluster
+                operator: In
+                values:
+                - teslamate-db
+              - key: postgres-operator.crunchydata.com/instance-set
+                operator: In
+                values:
+                - db1
+            topologyKey: kubernetes.io/hostname
+            namespaceSelector: 
+              name: teslamate
   backups:
     pgbackrest:
       image: percona/percona-postgresql-operator:2.2.0-ppg15-pgbackrest
@@ -45,7 +60,7 @@ spec:
             region: auto
   proxy:
     pgBouncer:
-      replicas: 2
+      replicas: 1
       image: percona/percona-postgresql-operator:2.2.0-ppg15-pgbouncer
       affinity:
         nodeAffinity:
@@ -56,6 +71,21 @@ spec:
                 operator: In
                 values:
                 - amd64
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: postgres-operator.crunchydata.com/cluster
+                operator: In
+                values:
+                - teslamate-db
+              - key: postgres-operator.crunchydata.com/role
+                operator: In
+                values:
+                - pgbouncer
+            topologyKey: kubernetes.io/hostname
+            namespaceSelector: 
+              name: teslamate
   pmm:
     enabled: false
     image: percona/pmm-client:2.37.0
