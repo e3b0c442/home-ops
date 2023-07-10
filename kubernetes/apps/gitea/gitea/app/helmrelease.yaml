@@ -30,6 +30,7 @@ spec:
         - host: git.0x.e3b0c442.dev
           paths:
             - path: /
+              pathType: Prefix
       tls:
         - hosts:
             - git.0x.e3b0c442.dev
