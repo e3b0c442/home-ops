@@ -9,7 +9,7 @@ spec:
   postgresVersion: 15
   users:
     - name: gitea
-      options: "SUPERUSER"
+      options: "NOSUPERUSER"
       databases:
         - gitea
     - name: drone
