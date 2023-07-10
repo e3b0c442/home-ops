@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ./registry-e3b0c442-dev-item.yaml
   - ./bjw-s.yaml
+  - ./gitea.yaml
   - ./jetstack.yaml
   - ./longhorn.yaml
   - ./minio.yaml
