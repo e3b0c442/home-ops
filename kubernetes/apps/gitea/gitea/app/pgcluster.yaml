@@ -12,6 +12,9 @@ spec:
       options: "SUPERUSER"
       databases:
         - gitea
+    - name: drone
+      databases:
+        - gitea
   image: percona/percona-postgresql-operator:2.2.0-ppg15-postgres
   imagePullPolicy: Always
   instances: 
