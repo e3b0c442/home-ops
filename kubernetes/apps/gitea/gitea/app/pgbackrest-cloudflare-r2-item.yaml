@@ -1,0 +1,8 @@
+---
+apiVersion: onepassword.com/v1
+kind: OnePasswordItem
+metadata:
+  name: pgbackrest-cloudflare-r2
+  namespace: gitea
+spec:
+  itemPath: "vaults/home-lab/items/pgbackrest-cloudflare-r2"
