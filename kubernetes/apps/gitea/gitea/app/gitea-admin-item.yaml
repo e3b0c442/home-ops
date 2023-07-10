@@ -5,4 +5,4 @@ metadata:
   name: gitea-admin
   namespace: gitea
 spec:
-  itemPath: "vaults/home-lab/items/gitea-item"
+  itemPath: "vaults/home-lab/items/gitea-admin"
