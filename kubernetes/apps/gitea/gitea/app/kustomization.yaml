@@ -6,4 +6,4 @@ resources:
   - gitea-admin-item.yaml
   - pgbackrest-cloudflare-r2-item.yaml
   - pgcluster.yaml
-# - helmrelease.yaml
+  - helmrelease.yaml
