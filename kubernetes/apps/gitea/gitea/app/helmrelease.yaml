@@ -48,29 +48,32 @@ spec:
           ROOT_URL: https://git.0x.e3b0c442.dev
           PROTCOL: http
       additionalConfigFromEnvs:
-        GITEA__database__DB_TYPE: postgres
-        GITEA__database__SSL_MODE: require
-        GITEA__database__HOST:
+        - name: GITEA__database__DB_TYPE
+          value: postgres
+        - name:GITEA__database__SSL_MODE
+          value: require
+        - name: GITEA__database__HOST
           valueFrom:
             secretKeyRef:
               name: gitea-db-pguser-gitea
               key: pgbouncer-host
-        GITEA__database__NAME:
+        - name: GITEA__database__NAME
           valueFrom:
             secretKeyRef:
               name: gitea-db-pguser-gitea
               key: dbname
-        GITEA__database__USER:
+        - name: GITEA__database__USER
           valueFrom:
             secretKeyRef:
               name: gitea-db-pguser-gitea
               key: user
-        GITEA__database__PASSWD:
+        - name: GITEA__database__PASSWD
           valueFrom:
             secretKeyRef:
               name: gitea-db-pguser-gitea
               key: password
-        GITEA__service__DISABLE_REGISTRATION: "true"
+        - name: GITEA__service__DISABLE_REGISTRATION
+          value: "true"
     postgresql:
       enabled: false
     memcached:
