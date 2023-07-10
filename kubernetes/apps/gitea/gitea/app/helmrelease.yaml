@@ -50,7 +50,7 @@ spec:
       additionalConfigFromEnvs:
         - name: GITEA__database__DB_TYPE
           value: postgres
-        - name:GITEA__database__SSL_MODE
+        - name: GITEA__database__SSL_MODE
           value: require
         - name: GITEA__database__HOST
           valueFrom:
