@@ -21,3 +21,5 @@ spec:
       host: longhorn.svc.e3b0c442.dev
       tls: true
       tlsSecret: longhorn-svc-e3b0c442-dev-tls
+      annotations: 
+        cert-manager.io/cluster-issuer: letsencrypt
