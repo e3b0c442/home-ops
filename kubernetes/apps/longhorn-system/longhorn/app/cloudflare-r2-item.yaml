@@ -2,6 +2,6 @@ apiVersion: onepassword.com/v1
 kind: OnePasswordItem
 metadata:
   name: cloudflare-r2
-  namespace: longhorn
+  namespace: longhorn-system
 spec:
   itemPath: "vaults/home-lab/items/cloudflare-r2-longhorn"
