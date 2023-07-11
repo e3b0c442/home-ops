@@ -48,6 +48,15 @@ spec:
   backups:
     pgbackrest:
       image: percona/percona-postgresql-operator:2.2.0-ppg15-pgbackrest
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/arch
+                operator: In
+                values:
+                - amd64
       configuration:
         - secret: 
             name: pgbackrest-cloudflare-r2
