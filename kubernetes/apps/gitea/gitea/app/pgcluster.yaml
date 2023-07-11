@@ -54,8 +54,24 @@ spec:
       configuration:
         - secret: 
             name: pgbackrest-cloudflare-r2
+      global:
+        repo1-retention-full: "7"
+        repo1-retention-full-type: count
+      repoHost:
+        affinity:
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+              - matchExpressions:
+                - key: kubernetes.io/arch
+                  operator: In
+                  values:
+                  - amd64
       repos: 
         - name: repo1
+          schedules:
+            full: "0 0 * * *"
+            differential: "0 * * * *"
           s3:
             bucket: gitea-db-backups
             endpoint: https://4871a91f82eb093a25cddb6b1b760ccf.r2.cloudflarestorage.com
